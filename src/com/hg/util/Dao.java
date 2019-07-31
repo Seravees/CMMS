@@ -16,7 +16,7 @@ public class Dao {
 
 		try {
 			Connection connect = DriverManager
-					.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=CMMS_DATA","sa","Sippl@123");
+					.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=CMMS","sa","qqq63681048");
 			System.out.println("Success connect Mysql server");
 			return connect;
 		} catch (SQLException e) {

@@ -1,6 +1,7 @@
 package com.hg.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,7 +51,9 @@ public class LoginServlet extends HttpServlet {
 
 		IUserService service = new UserServiceImpl();
 		User user = service.loginUser(accountID, psd);
+		List<User> userList=service.getUsers();
 		request.setAttribute("name", user.getName());
+		request.setAttribute("users", userList);
 		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
 				request, response);
 	}
