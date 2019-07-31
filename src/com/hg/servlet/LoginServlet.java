@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hg.domain.User;
 import com.hg.service.IUserService;
 import com.hg.service.impl.UserServiceImpl;
 
@@ -33,12 +34,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("flag");
-		String accountID = request.getParameter("accountID");
-		String psd = request.getParameter("psd");
-		
-		IUserService service=new UserServiceImpl();
-		service.loginUser(accountID, psd);
+
 	}
 
 	/**
@@ -48,6 +44,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		String accountID = request.getParameter("accountID");
+		String psd = request.getParameter("psd");
+
+		IUserService service = new UserServiceImpl();
+		User user = service.loginUser(accountID, psd);
+		request.setAttribute("name", user.getName());
+		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
+				request, response);
 	}
 
 }

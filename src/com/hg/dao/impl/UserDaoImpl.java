@@ -14,25 +14,25 @@ public class UserDaoImpl implements IUserDao {
 	@Override
 	public User find(String accountID, String psd) {
 		// TODO Auto-generated method stub
-		System.out.println("flag");
+		User user = new User();
 		Connection conn = Dao.conn();
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt
 					.executeQuery("select * from dbo.CMMS_Account where AccountID='"
-							+ accountID+"'and PSD='"+psd +"'");
+							+ accountID + "'and PSD='" + psd + "'");
 			while (rs.next()) {
-				User user = new User();
 				user.setAccountID(rs.getString("AccountID"));
 				user.setPsd(rs.getString("PSD"));
 				user.setName(rs.getString("Name"));
-				System.out.println(user.toString());
+				user.setName(rs.getString("Name"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
-		return null;
+		return user;
 	}
 
 }
