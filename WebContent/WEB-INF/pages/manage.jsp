@@ -14,14 +14,28 @@
 	href="js/easyUIDemo/themes/icon.css"></link>
 <link rel="stylesheet" type="text/css"
 	href="js/easyUIDemo/demo/demo.css"></link>
+<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
-	<%=request.getAttribute("name")%>
-	<div class="easyui-layout" style="width: 700px; height: 350px">
-		<div data-options="region:'center',title:'main'">
+
+	<div class="easyui-layout" style="height: 350px">
+		<div data-options="region:'north',split:true,collapsible:false" style="height: 50px">
+			<%=request.getAttribute("name")%>
+		</div>
+		<div data-options="region:'west',split:true,collapsible:false"
+			title="West" style="width: 300px;"></div>
+		<div data-options="region:'center'" title="main"
+			style="border-left: 0px; border-right: 0px;">
 			<table class="easyui-datagrid" title="Basic DataGrid"
-				style="width: 600px; height: 250px">
+				style="border-left: 0px; border-right: 0px;">
 				<thead>
 					<tr>
 						<th field="name1">1</th>
