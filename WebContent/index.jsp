@@ -5,13 +5,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/easyUIDemo/jquery.min.js"></script>
+<script type="text/javascript"
+	src="js/easyUIDemo/jquery.easyui.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="js/easyUIDemo/themes/default/easyui.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="js/easyUIDemo/themes/icon.css"></link>
+<link rel="stylesheet" type="text/css"
+	href="js/easyUIDemo/demo/demo.css"></link>
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="login" method="post">
-		用户名：<input type="text" name="accountID"><br /> 密码：<input
-			type="password" name="psd"><br /> <input type="submit"
-			value="登录">
-	</form>
+
+	<div class="easyui-panel" title="登录" style="width: 400px">
+		<form action="login" method="post">
+			<table cellpadding="5">
+				<tr>
+					<td>用户名：</td>
+					<td><input type="text" name="accountID"></td>
+				</tr>
+				<tr>
+					<td>密码：</td>
+					<td><input type="password" name="psd"></td>
+				</tr>
+			</table>
+			<br /> <input type="submit" value="登录">
+		</form>
+	</div>
+
+
 </body>
 </html>

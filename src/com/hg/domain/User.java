@@ -5,6 +5,24 @@ public class User {
 	String psd;
 	String name;
 	String tel;
+	String accountGroupID;
+	String secGroupID;
+
+	public String getAccountGroupID() {
+		return accountGroupID;
+	}
+
+	public void setAccountGroupID(String accountGroupID) {
+		this.accountGroupID = accountGroupID;
+	}
+
+	public String getSecGroupID() {
+		return secGroupID;
+	}
+
+	public void setSecGroupID(String secGroupID) {
+		this.secGroupID = secGroupID;
+	}
 
 	public String getAccountID() {
 		return accountID;
