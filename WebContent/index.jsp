@@ -6,8 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="js/easyUIDemo/jquery.min.js"></script>
-<script type="text/javascript"
-	src="js/easyUIDemo/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/easyUIDemo/jquery.easyui.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="js/easyUIDemo/themes/default/easyui.css"></link>
 <link rel="stylesheet" type="text/css"
@@ -30,7 +29,7 @@
 					<td><input type="password" name="psd"></td>
 				</tr>
 			</table>
-			<br /> <input type="submit" value="登录">
+			<input type="submit" value="登录">
 		</form>
 	</div>
 

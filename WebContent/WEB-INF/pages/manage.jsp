@@ -25,41 +25,56 @@ body {
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%
+		List<User> userList = (List<User>) request.getAttribute("users");
+	%>
 	<div class="easyui-layout" style="height: 350px">
-		<div data-options="region:'north',split:true,collapsible:false" style="height: 50px">
+
+		<div data-options="region:'north',split:true,collapsible:false"
+			style="height: 50px">
 			<%=request.getAttribute("name")%>
 		</div>
+
 		<div data-options="region:'west',split:true,collapsible:false"
-			title="West" style="width: 300px;"></div>
+			title="West" style="width: 300px;">
+			<div class="easyui-sidemenu"
+				data-options="data:datalist,onSelect:function(obj){		
+				if(obj.text=='用户管理'){
+					window.location.href='user';
+				}else if(obj.text=='设备管理'){
+					post();		
+				}
+				
+			}"
+				style="width: 293px;"></div>
+		</div>
+
 		<div data-options="region:'center'" title="main"
 			style="border-left: 0px; border-right: 0px;">
-			<table class="easyui-datagrid" title="Basic DataGrid"
-				style="border-left: 0px; border-right: 0px;">
-				<thead>
-					<tr>
-						<th field="name1">1</th>
-						<th field="name2">2</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-						List<User> userList = (List<User>) request.getAttribute("users");
-						for (int i = 0; i < userList.size(); i++) {
-							User user = userList.get(i);
-					%>
-					<tr>
-						<td><%=user.getAccountID()%></td>
-						<td><%=user.getName()%></td>
-					</tr>
-					<%
-						}
-					%>
-				</tbody>
-			</table>
+			<%=request.getAttribute("test")%>
 		</div>
 	</div>
 
+	<script type="text/javascript">
+		var datalist = [ {
+			text : '用户管理',
+			children : [ {
+				text : '用户管理'
+			} ]
+		}, {
+			text : '设备管理',
+			children : [ {
+				text : '设备管理'
+			} ]
+		} ]
 
+		function post() {
+			var f = document.createElement("form");
+			f.action = "user";
+			f.method = "post";
+			document.appendChild(f);
+			f.submit();
+		}
+	</script>
 </body>
 </html>

@@ -1,29 +1,23 @@
 package com.hg.servlet;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hg.domain.User;
-import com.hg.service.IUserService;
-import com.hg.service.impl.UserServiceImpl;
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class UserServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/UserServlet")
+public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginServlet() {
+	public UserServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,7 +29,16 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		request.setAttribute(
+				"test",
+				"<table class='easyui-datagrid' title='Basic DataGrid'"
+						+ "	style='border-left: 0px; border-right: 0px;'>"
+						+ "<thead><tr><th field='name1'>1</th><th field='name2'>2</th></tr></thead>"
+						+ "<tbody><tr><td>1</td><td>2</td></tr></tbody>"
+						+ "</table>");
+		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
+				request, response);
+		
 	}
 
 	/**
@@ -45,17 +48,13 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		String accountID = request.getParameter("accountID");
-		String psd = request.getParameter("psd");
-
-		IUserService service = new UserServiceImpl();
-		User user = service.loginUser(accountID, psd);
-		List<User> userList = service.getUsers();
-		request.setAttribute("name", user.getName());
-		request.setAttribute("test", "");
-		request.setAttribute("test1", "user");
-		request.setAttribute("user", user);
+		request.setAttribute(
+				"test",
+				"<table class='easyui-datagrid' title='Basic DataGrid'"
+						+ "	style='border-left: 0px; border-right: 0px;'>"
+						+ "<thead><tr><th field='name1'>1</th><th field='name2'>2</th></tr></thead>"
+						+ "<tbody><tr><td>1</td><td>2</td></tr></tbody>"
+						+ "</table>");
 		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
 				request, response);
 	}
