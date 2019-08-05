@@ -40,9 +40,9 @@ body {
 			<div class="easyui-sidemenu"
 				data-options="data:datalist,onSelect:function(obj){		
 				if(obj.text=='用户管理'){
-					window.location.href='user';
+					post('user');
 				}else if(obj.text=='设备管理'){
-					post();		
+					post('user');		
 				}
 				
 			}"
@@ -68,11 +68,16 @@ body {
 			} ]
 		} ]
 
-		function post() {
+		function post(o) {
 			var f = document.createElement("form");
-			f.action = "user";
+			f.action = o;
 			f.method = "post";
-			document.appendChild(f);
+			var hdnFilePath = document.createElement('input');
+			hdnFilePath.type = "hidden";
+			hdnFilePath.name = "user";
+			hdnFilePath.value = "1";
+			f.appendChild(hdnFilePath);
+			document.body.appendChild(f);
 			f.submit();
 		}
 	</script>
