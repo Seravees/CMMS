@@ -1,6 +1,7 @@
 package com.hg.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,16 +30,7 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute(
-				"test",
-				"<table class='easyui-datagrid' title='Basic DataGrid'"
-						+ "	style='border-left: 0px; border-right: 0px;'>"
-						+ "<thead><tr><th field='name1'>1</th><th field='name2'>2</th></tr></thead>"
-						+ "<tbody><tr><td>1</td><td>2</td></tr></tbody>"
-						+ "</table>");
-		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
-				request, response);
-		
+
 	}
 
 	/**
@@ -48,13 +40,25 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		request.setAttribute(
 				"test",
-				"<table class='easyui-datagrid' title='Basic DataGrid'"
-						+ "	style='border-left: 0px; border-right: 0px;'>"
-						+ "<thead><tr><th field='name1'>1</th><th field='name2'>2</th></tr></thead>"
-						+ "<tbody><tr><td>1</td><td>2</td></tr></tbody>"
-						+ "</table>");
+				"<table id='datagrid' class='easyui-datagrid' title='用户'"
+						+ "	style='border-left: 0px; border-right: 0px;' "
+						+ "toolbar='#toolbar' rownumbers='true' singleSelect='true'>"
+						+ "</table>"
+						+ "<div id='toolbar'>"
+						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-add' plain='true' onclick='newUser()'>"
+						+ "添加用户</a>"
+						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-edit' plain='true' onclick='editUser()'>"
+						+ "编辑用户</a>"
+						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='removeUser()'>"
+						+ "删除用户</a>"
+						+ "<input id='searchByName'/>"
+						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-search' plain='true' onclick='doSearch()'>"
+						+ "查找用户</a>"
+						+ "</div>"
+						+ "<script type='text/javascript' src='js/function.js'></script>");
 		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
 				request, response);
 	}

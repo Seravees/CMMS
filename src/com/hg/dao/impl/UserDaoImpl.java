@@ -20,7 +20,8 @@ public class UserDaoImpl implements IUserDao {
 		Connection conn = Dao.conn();
 		try {
 			PreparedStatement pstmt = conn
-					.prepareStatement("select * from dbo.CMMS_Account where AccountID = ? and PSD = ?");
+					.prepareStatement("select * from dbo.CMMS_Account "
+							+ "where AccountID = ? and PSD = ?");
 			pstmt.setString(1, accountID);
 			pstmt.setString(2, psd);
 			ResultSet rs = pstmt.executeQuery();
@@ -29,6 +30,9 @@ public class UserDaoImpl implements IUserDao {
 				user.setAccountID(rs.getString("AccountID"));
 				user.setPsd(rs.getString("PSD"));
 				user.setName(rs.getString("Name"));
+				user.setTel(rs.getString("TEL"));
+				user.setAccountGroupID(rs.getString("AccountGroupID"));
+				user.setSecGroupID(rs.getString("SecGroupID"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -41,17 +45,21 @@ public class UserDaoImpl implements IUserDao {
 	@Override
 	public List<User> findAllUser() {
 		// TODO Auto-generated method stub
-		Connection conn=Dao.conn();
+		Connection conn = Dao.conn();
 		List<User> userList = new ArrayList<User>();
-		
+
 		try {
-			PreparedStatement pstmt=conn.prepareStatement("select * from dbo.CMMS_Account");
+			PreparedStatement pstmt = conn
+					.prepareStatement("select * from dbo.CMMS_Account where AccountGroupID <> '1'");
 			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				User user=new User();
+			while (rs.next()) {
+				User user = new User();
 				user.setAccountID(rs.getString("AccountID"));
 				user.setPsd(rs.getString("PSD"));
 				user.setName(rs.getString("Name"));
+				user.setTel(rs.getString("TEL"));
+				user.setAccountGroupID(rs.getString("AccountGroupID"));
+				user.setSecGroupID(rs.getString("SecGroupID"));
 				userList.add(user);
 			}
 		} catch (SQLException e) {

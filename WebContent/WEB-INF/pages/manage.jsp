@@ -25,10 +25,8 @@ body {
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		List<User> userList = (List<User>) request.getAttribute("users");
-	%>
-	<div class="easyui-layout" style="height: 350px">
+
+	<div class="easyui-layout" style="height: 550px">
 
 		<div data-options="region:'north',split:true,collapsible:false"
 			style="height: 50px">
@@ -75,7 +73,7 @@ body {
 			var hdnFilePath = document.createElement('input');
 			hdnFilePath.type = "hidden";
 			hdnFilePath.name = "user";
-			hdnFilePath.value = "1";
+			hdnFilePath.value = "user";
 			f.appendChild(hdnFilePath);
 			document.body.appendChild(f);
 			f.submit();
