@@ -49,11 +49,10 @@ function pagerFilter(data) {
 
 function doSearch() {
 	var $userName = $('#searchByName');
-	var byName = $userName.value;
-
+	var ByName = $userName.value;
 	$('#datagrid').datagrid({
 		queryParams : {
-			ByName : byName
+			ByName : ByName
 		},
 		columns : [ [ {
 			field : 'accountID',
@@ -69,7 +68,7 @@ function doSearch() {
 			title : 'tel'
 		} ] ],
 		url : 'searchUser',
-		ByName : byName
+		ByName : ByName
 		//loadFilter : pagerFilter
 	});
 }
