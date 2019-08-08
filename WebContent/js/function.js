@@ -6,7 +6,7 @@ $('#datagrid').datagrid({
 	}, {
 		field : 'name',
 		width : 100,
-		title : 'productid'
+		title : 'name'
 	}, {
 		field : 'tel',
 		width : 100,
@@ -47,28 +47,3 @@ function pagerFilter(data) {
 	return data;
 }
 
-function doSearch() {
-	var $userName = $('#searchByName');
-	var ByName = $userName.value;
-	$('#datagrid').datagrid({
-		queryParams : {
-			ByName : ByName
-		},
-		columns : [ [ {
-			field : 'accountID',
-			width : 100,
-			title : 'itemid'
-		}, {
-			field : 'name',
-			width : 100,
-			title : 'productid'
-		}, {
-			field : 'tel',
-			width : 100,
-			title : 'tel'
-		} ] ],
-		url : 'searchUser',
-		ByName : ByName
-		//loadFilter : pagerFilter
-	});
-}

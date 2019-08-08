@@ -8,4 +8,6 @@ public interface IUserDao {
 	User find(String accountID, String psd);
 	
 	List<User> findAllUser();
+	
+	User searchUser(String name);
 }

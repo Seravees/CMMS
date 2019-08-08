@@ -8,4 +8,6 @@ public interface IUserService {
 	User loginUser(String accountID, String psd);
 	
 	List<User> getUsers();
+	
+	User searchUser(String name);
 }

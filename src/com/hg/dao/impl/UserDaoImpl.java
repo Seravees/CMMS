@@ -70,4 +70,31 @@ public class UserDaoImpl implements IUserDao {
 		return userList;
 	}
 
+	@Override
+	public User searchUser(String name) {
+		// TODO Auto-generated method stub
+		User user = new User();
+		Connection conn = Dao.conn();
+
+		try {
+			PreparedStatement pstmt = conn
+					.prepareStatement("select * from dbo.CMMS_Account where Name = ?");
+			pstmt.setString(1, name);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user.setAccountID(rs.getString("AccountID"));
+				user.setPsd(rs.getString("PSD"));
+				user.setName(rs.getString("Name"));
+				user.setTel(rs.getString("TEL"));
+				user.setAccountGroupID(rs.getString("AccountGroupID"));
+				user.setSecGroupID(rs.getString("SecGroupID"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		return user;
+	}
+
 }
