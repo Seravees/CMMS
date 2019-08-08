@@ -44,4 +44,13 @@
 		<servlet-name>searchUserServlet</servlet-name>
 		<url-pattern>/searchUser</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>addUserServlet</servlet-name>
+		<servlet-class>com.hg.servlet.AddUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addUserServlet</servlet-name>
+		<url-pattern>/Save</url-pattern>
+	</servlet-mapping>
 </web-app>

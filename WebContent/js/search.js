@@ -20,6 +20,8 @@ function doSearch() {
 		} ] ],
 		url : 'searchUser',
 		ByName : ByName
-		//loadFilter : pagerFilter
+	// loadFilter : pagerFilter
 	});
 }
+
+

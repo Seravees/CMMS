@@ -97,4 +97,24 @@ public class UserDaoImpl implements IUserDao {
 		return user;
 	}
 
+	@Override
+	public int addUser(User user) {
+		// TODO Auto-generated method stub
+		Connection conn = Dao.conn();
+		try {
+			PreparedStatement pstmt = conn
+					.prepareStatement("insert into dbo.CMMS_Account (AccountID,PSD,Name,AccountGroupID) values(?,?,?,?)");
+			pstmt.setString(1, user.getAccountID());
+			pstmt.setString(2, user.getPsd());
+			pstmt.setString(3, user.getName());
+			pstmt.setString(4, "2");
+			int rs = pstmt.executeUpdate();
+			return rs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }

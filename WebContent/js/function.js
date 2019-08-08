@@ -2,15 +2,15 @@ $('#datagrid').datagrid({
 	columns : [ [ {
 		field : 'accountID',
 		width : 100,
-		title : 'itemid'
+		title : '用户名'
 	}, {
 		field : 'name',
 		width : 100,
-		title : 'name'
+		title : '姓名'
 	}, {
 		field : 'tel',
 		width : 100,
-		title : 'tel'
+		title : '电话'
 	} ] ],
 	pagination : true,
 	url : 'showUsersServlet',
@@ -47,3 +47,36 @@ function pagerFilter(data) {
 	return data;
 }
 
+function newUser() {
+	$('#dlg').dialog('open').dialog('setTitle', '添加用户');
+	$('#fm').form('clear');
+	url = 'Save';
+}
+
+function saveUser() {
+	$('#fm').form('submit', {
+		url : url,
+		onSubmit : function() {
+			return $(this).form('validate');
+		},
+		success : function(res) {
+			$('#dlg').dialog('close');
+			$('#dg').datagrid('reload');
+			if (res == 'fail') {
+				$.messager.show({
+					title:'Error',
+					msg:'添加失败'
+				});
+			}else{
+				$.messager.show({
+					title:'Success',
+					msg:'添加成功'
+				});
+			}
+		}
+	});
+}
+
+function closeDlg() {
+	$('#dlg').dialog('close');
+}

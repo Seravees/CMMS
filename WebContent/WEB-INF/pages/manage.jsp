@@ -14,6 +14,8 @@
 	href="js/easyUIDemo/themes/icon.css"></link>
 <link rel="stylesheet" type="text/css"
 	href="js/easyUIDemo/demo/demo.css"></link>
+<script type="text/javascript"
+	src="js/easyUIDemo/locale/easyui-lang-zh_CN.js"></script>
 <style type="text/css">
 body {
 	margin: 0px;
