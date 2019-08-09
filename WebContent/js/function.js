@@ -11,6 +11,10 @@ $('#datagrid').datagrid({
 		field : 'tel',
 		width : 100,
 		title : '电话'
+	}, {
+		field : 'accountGroupID',
+		width : 100,
+		title : '角色'
 	} ] ],
 	pagination : true,
 	url : 'showUsersServlet',
@@ -64,17 +68,48 @@ function saveUser() {
 			$('#dg').datagrid('reload');
 			if (res == 'fail') {
 				$.messager.show({
-					title:'Error',
-					msg:'添加失败'
+					title : 'Error',
+					msg : '操作失败'
 				});
-			}else{
+			} else {
 				$.messager.show({
-					title:'Success',
-					msg:'添加成功'
+					title : 'Success',
+					msg : '操作成功'
 				});
 			}
 		}
 	});
+}
+
+function editUser() {
+	var row = $('#datagrid').datagrid('getSelected');
+	if (row) {
+		$('#dlg').dialog('open').dialog('setTitle', '编辑用户');
+		$('#fm').form('load', row);
+		url = 'Edit?accountID=' + row.accountID;
+	}
+}
+
+function removeUser() {
+	var row = $('#datagrid').datagrid('getSelected');
+	if (row) {
+		$.messager.confirm('Confirm', '确定删除此用户？', function(r) {
+			if (r) {
+				$.post('Delete', {
+					accountID : row.accountID
+				}, function(result) {
+					if (result.success) {
+						$('#dg').datagrid('reload');
+					}else{
+						$.messager.show({
+							title : 'Error',
+							msg : '删除失败'
+						},'json');
+					}
+				})
+			}
+		});
+	}
 }
 
 function closeDlg() {

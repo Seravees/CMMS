@@ -59,7 +59,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [accountID=" + accountID + ", psd=" + psd + ", name="
-				+ name + ", tel=" + tel + "]";
+				+ name + ", tel=" + tel + ", accountGroupID=" + accountGroupID
+				+ ", secGroupID=" + secGroupID + "]";
 	}
 
 }

@@ -1,8 +1,6 @@
 package com.hg.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,22 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.hg.domain.User;
-import com.hg.service.IUserService;
-import com.hg.service.impl.UserServiceImpl;
 
 /**
- * Servlet implementation class ShowUserServlet
+ * Servlet implementation class EditUserServlet
  */
-@WebServlet("/ShowUserServlet")
-public class ShowUserServlet extends HttpServlet {
+@WebServlet("/EditUserServlet")
+public class EditUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ShowUserServlet() {
+	public EditUserServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,16 +42,12 @@ public class ShowUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// System.out.println("flag");
-		IUserService service = new UserServiceImpl();
-		List<User> list = service.getUsers();
-
-		Gson gson = new Gson();
-		String json = gson.toJson(list);
-		//System.out.println(json);
-		response.setContentType("text/json;charset=UTF-8");
-		PrintWriter writer = response.getWriter();
-		writer.write(json);
+		User user = new User();
+		user.setAccountID(request.getParameter("accountID"));
+		user.setPsd(request.getParameter("psd"));
+		user.setName(request.getParameter("name"));
+		user.setAccountGroupID(request.getParameter("accountGroupID"));
+		System.out.println(user.toString());
 	}
 
 }

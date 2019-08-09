@@ -107,9 +107,23 @@ public class UserDaoImpl implements IUserDao {
 			pstmt.setString(1, user.getAccountID());
 			pstmt.setString(2, user.getPsd());
 			pstmt.setString(3, user.getName());
-			pstmt.setString(4, "2");
+			pstmt.setString(4, user.getAccountGroupID());
 			int rs = pstmt.executeUpdate();
 			return rs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int editUser(String accountID, User user) {
+		// TODO Auto-generated method stub
+		Connection conn = Dao.conn();
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement("update");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

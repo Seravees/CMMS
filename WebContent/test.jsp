@@ -24,5 +24,10 @@
 	}
 	
 	</script>
+	
+	<select class='easyui-combobox' data-options="panelHeight:'auto'">
+		<option>a</option>
+		<option>b</option>
+	</select>
 </body>
 </html>

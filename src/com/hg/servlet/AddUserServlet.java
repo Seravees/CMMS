@@ -46,9 +46,10 @@ public class AddUserServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		User user = new User();
-		user.setAccountID(request.getParameter("user"));
+		user.setAccountID(request.getParameter("accountID"));
 		user.setPsd(request.getParameter("psd"));
 		user.setName(request.getParameter("name"));
+		user.setAccountGroupID(request.getParameter("accountGroupID"));
 
 		IUserService service = new UserServiceImpl();
 		int rs = service.addUser(user);
@@ -58,7 +59,6 @@ public class AddUserServlet extends HttpServlet {
 			PrintWriter writer = response.getWriter();
 			writer.write("fail");
 		}
-
 	}
 
 }
