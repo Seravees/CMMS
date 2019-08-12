@@ -14,4 +14,6 @@ public interface IUserDao {
 	int addUser(User user);
 
 	int editUser(String accountID, User user);
+	
+	int deleteUser(String accountID);
 }

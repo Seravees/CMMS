@@ -1,21 +1,26 @@
 $('#datagrid').datagrid({
 	columns : [ [ {
 		field : 'accountID',
-		width : 100,
-		title : '用户名'
+		
+		title : '用户名',
+		fixed : true
 	}, {
 		field : 'name',
-		width : 100,
-		title : '姓名'
+		
+		title : '姓名',
+		fixed : true
 	}, {
 		field : 'tel',
-		width : 100,
-		title : '电话'
+		
+		title : '电话',
+		fixed : true
 	}, {
 		field : 'accountGroupID',
-		width : 100,
-		title : '角色'
+		
+		title : '角色',
+		fixed : true
 	} ] ],
+	fitColumns : true,
 	pagination : true,
 	url : 'showUsersServlet',
 	loadFilter : pagerFilter
@@ -54,6 +59,9 @@ function pagerFilter(data) {
 function newUser() {
 	$('#dlg').dialog('open').dialog('setTitle', '添加用户');
 	$('#fm').form('clear');
+	$('#accountID').validatebox({
+		editable : true
+	});
 	url = 'Save';
 }
 
@@ -64,19 +72,29 @@ function saveUser() {
 			return $(this).form('validate');
 		},
 		success : function(res) {
-			$('#dlg').dialog('close');
-			$('#dg').datagrid('reload');
-			if (res == 'fail') {
+			if (res == 'fail add') {
 				$.messager.show({
 					title : 'Error',
-					msg : '操作失败'
+					msg : '添加失败'
 				});
-			} else {
+			} else if (res == 'success add') {
 				$.messager.show({
 					title : 'Success',
-					msg : '操作成功'
+					msg : '添加成功'
+				});
+			} else if (res == 'fail edit') {
+				$.messager.show({
+					title : 'Error',
+					msg : '修改失败'
+				});
+			} else if (res == 'success edit') {
+				$.messager.show({
+					title : 'Success',
+					msg : '修改成功'
 				});
 			}
+			$('#dlg').dialog('close');
+			$('#datagrid').datagrid('reload');
 		}
 	});
 }
@@ -86,6 +104,9 @@ function editUser() {
 	if (row) {
 		$('#dlg').dialog('open').dialog('setTitle', '编辑用户');
 		$('#fm').form('load', row);
+		$('#accountID').validatebox({
+			editable : false
+		});
 		url = 'Edit?accountID=' + row.accountID;
 	}
 }
@@ -98,13 +119,17 @@ function removeUser() {
 				$.post('Delete', {
 					accountID : row.accountID
 				}, function(result) {
-					if (result.success) {
-						$('#dg').datagrid('reload');
-					}else{
+					if (result== 'success delete') {
+						$('#datagrid').datagrid('reload');
+						$.messager.show({
+							title : 'Success',
+							msg : '删除成功'
+						});
+					} else if(result== 'fail delete'){
 						$.messager.show({
 							title : 'Error',
 							msg : '删除失败'
-						},'json');
+						}, 'json');
 					}
 				})
 			}

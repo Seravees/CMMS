@@ -7,17 +7,26 @@ function doSearch() {
 		},
 		columns : [ [ {
 			field : 'accountID',
-			width : 100,
-			title : 'itemid'
+			
+			title : '用户名',
+			fixed : true
 		}, {
 			field : 'name',
-			width : 100,
-			title : 'productid'
+			
+			title : '姓名',
+			fixed : true
 		}, {
 			field : 'tel',
-			width : 100,
-			title : 'tel'
+			
+			title : '电话',
+			fixed : true
+		}, {
+			field : 'accountGroupID',
+			
+			title : '角色',
+			fixed : true
 		} ] ],
+		fitColumns : true,
 		url : 'searchUser',
 		ByName : ByName
 	// loadFilter : pagerFilter

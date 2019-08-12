@@ -103,11 +103,12 @@ public class UserDaoImpl implements IUserDao {
 		Connection conn = Dao.conn();
 		try {
 			PreparedStatement pstmt = conn
-					.prepareStatement("insert into dbo.CMMS_Account (AccountID,PSD,Name,AccountGroupID) values(?,?,?,?)");
+					.prepareStatement("insert into dbo.CMMS_Account (AccountID,PSD,Name,TEL,AccountGroupID) values(?,?,?,?,?)");
 			pstmt.setString(1, user.getAccountID());
 			pstmt.setString(2, user.getPsd());
 			pstmt.setString(3, user.getName());
-			pstmt.setString(4, user.getAccountGroupID());
+			pstmt.setString(4, user.getTel());
+			pstmt.setString(5, user.getAccountGroupID());
 			int rs = pstmt.executeUpdate();
 			return rs;
 		} catch (SQLException e) {
@@ -123,7 +124,34 @@ public class UserDaoImpl implements IUserDao {
 		Connection conn = Dao.conn();
 
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("update");
+			PreparedStatement pstmt = conn
+					.prepareStatement("update dbo.CMMS_Account "
+							+ "set PSD=?,Name=?,TEL=?,AccountGroupID=? where AccountID=?");
+			pstmt.setString(1, user.getPsd());
+			pstmt.setString(2, user.getName());
+			pstmt.setString(3, user.getTel());
+			pstmt.setString(4, user.getAccountGroupID());
+			pstmt.setString(5, user.getAccountID());
+			int rs = pstmt.executeUpdate();
+			return rs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int deleteUser(String accountID) {
+		// TODO Auto-generated method stub
+		Connection conn = Dao.conn();
+
+		try {
+			PreparedStatement pstmt = conn
+					.prepareStatement("delete from dbo.CMMS_Account where AccountID=?");
+			pstmt.setString(1, accountID);
+			int rs = pstmt.executeUpdate();
+			return rs;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

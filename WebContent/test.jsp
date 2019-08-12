@@ -18,16 +18,15 @@
 	<input id='searchByName'>
 	<a  class='easyui-linkbutton' iconCls='icon-search' plain='true' onclick='onSearch()'>test</a>
 	
+
+	
+	<input id='name' name='accountID' class='easyui-validatebox' required='true' value='a' >
+	
 	<script type="text/javascript">
 	function onSearch() {
 		alert($('#searchByName').value);		
 	}
-	
-	</script>
-	
-	<select class='easyui-combobox' data-options="panelHeight:'auto'">
-		<option>a</option>
-		<option>b</option>
-	</select>
+	$('#name').validatebox({editable:false});
+	</script>	
 </body>
 </html>

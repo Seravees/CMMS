@@ -33,4 +33,16 @@ public class UserServiceImpl implements IUserService {
 		// TODO Auto-generated method stub
 		return userDao.addUser(user);
 	}
+
+	@Override
+	public int editUser(String accountID, User user) {
+		// TODO Auto-generated method stub
+		return userDao.editUser(accountID, user);
+	}
+
+	@Override
+	public int deleteUser(String accountID) {
+		// TODO Auto-generated method stub
+		return userDao.deleteUser(accountID);
+	}
 }

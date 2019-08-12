@@ -1,6 +1,7 @@
 package com.hg.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hg.domain.User;
+import com.hg.service.IUserService;
+import com.hg.service.impl.UserServiceImpl;
 
 /**
  * Servlet implementation class EditUserServlet
@@ -46,8 +49,21 @@ public class EditUserServlet extends HttpServlet {
 		user.setAccountID(request.getParameter("accountID"));
 		user.setPsd(request.getParameter("psd"));
 		user.setName(request.getParameter("name"));
+		user.setTel(request.getParameter("tel"));
 		user.setAccountGroupID(request.getParameter("accountGroupID"));
-		System.out.println(user.toString());
+		
+		IUserService service = new UserServiceImpl();
+		int rs=service.editUser(user.getAccountID(), user);
+		if (rs == 1) {
+			PrintWriter writer = response.getWriter();
+			writer.write("success edit");
+			writer.close();
+		} else {
+			//System.out.println("fail");
+			PrintWriter writer = response.getWriter();
+			writer.write("fail edit");
+			writer.close();
+		}
 	}
 
 }

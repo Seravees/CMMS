@@ -49,15 +49,20 @@ public class AddUserServlet extends HttpServlet {
 		user.setAccountID(request.getParameter("accountID"));
 		user.setPsd(request.getParameter("psd"));
 		user.setName(request.getParameter("name"));
+		user.setTel(request.getParameter("tel"));
 		user.setAccountGroupID(request.getParameter("accountGroupID"));
 
 		IUserService service = new UserServiceImpl();
 		int rs = service.addUser(user);
 		if (rs == 1) {
-		} else {
-			System.out.println("fail");
 			PrintWriter writer = response.getWriter();
-			writer.write("fail");
+			writer.write("success add");
+			writer.close();
+		} else {
+			//System.out.println("fail");
+			PrintWriter writer = response.getWriter();
+			writer.write("fail add");
+			writer.close();
 		}
 	}
 

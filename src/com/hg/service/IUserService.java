@@ -12,4 +12,8 @@ public interface IUserService {
 	User searchUser(String name);
 
 	int addUser(User user);
+	
+	int editUser(String accountID, User user);
+	
+	int deleteUser(String accountID);
 }
