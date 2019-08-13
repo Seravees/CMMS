@@ -2,7 +2,6 @@ package com.hg.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -51,9 +50,8 @@ public class SearchUserServlet extends HttpServlet {
 		String byName = request.getParameter("ByName");
 		System.out.println(byName);
 		IUserService service = new UserServiceImpl();
-		User user = service.searchUser(byName);
-		List<User> list = new ArrayList<User>();
-		list.add(user);
+
+		List<User> list = service.searchUser(byName);
 
 		Gson gson = new Gson();
 		String json = gson.toJson(list);

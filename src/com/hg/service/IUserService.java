@@ -9,7 +9,7 @@ public interface IUserService {
 
 	List<User> getUsers();
 
-	User searchUser(String name);
+	List<User> searchUser(String name);
 
 	int addUser(User user);
 	

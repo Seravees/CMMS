@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hg.domain.User;
 import com.hg.service.IUserService;
@@ -63,13 +64,19 @@ public class LoginServlet extends HttpServlet {
 				url = "/WEB-INF/pages/malfunction.jsp";
 				break;
 			}
+			HttpSession session = request.getSession();
+			session.setAttribute("name", user.getName());
 			request.setAttribute("name", user.getName());
 			request.setAttribute("test", "");
 			request.setAttribute("test1", "user");
 			request.setAttribute("user", user);
-			request.getRequestDispatcher(url).forward(request, response);
+			System.out.println(url);
+			// response.sendRedirect(url);
+			//request.getRequestDispatcher(url).forward(request, response);
+			response.sendRedirect("/CMMS/manageServlet");
 		} else {
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp")
+					.forward(request, response);
 		}
 	}
 }

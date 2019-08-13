@@ -16,6 +16,7 @@
 	href="js/easyUIDemo/demo/demo.css"></link>
 <script type="text/javascript"
 	src="js/easyUIDemo/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/userFunction.js"></script>
 <style type="text/css">
 body {
 	margin: 0px;
@@ -32,11 +33,12 @@ body {
 
 		<div data-options="region:'north',split:true,collapsible:false"
 			style="height: 50px">
-			<%=request.getAttribute("name")%>
+			<%=session.getAttribute("name")%>
+			<a href='logout' class='easyui-linkbutton' plain='true'>注销</a>
 		</div>
 
 		<div data-options="region:'west',split:true,collapsible:false"
-			title="West" style="width: 300px;">
+			title="" style="width: 300px;">
 			<div class="easyui-sidemenu"
 				data-options="data:datalist,onSelect:function(obj){		
 				if(obj.text=='用户管理'){
@@ -49,7 +51,7 @@ body {
 				style="width: 293px;"></div>
 		</div>
 
-		<div data-options="region:'center'" title="main"
+		<div data-options="region:'center'" title=""
 			style="border-left: 0px; border-right: 0px;">
 			<%=request.getAttribute("test")%>
 		</div>

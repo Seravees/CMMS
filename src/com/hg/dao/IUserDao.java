@@ -9,7 +9,7 @@ public interface IUserDao {
 
 	List<User> findAllUser();
 
-	User searchUser(String name);
+	List<User> searchUser(String name);
 
 	int addUser(User user);
 

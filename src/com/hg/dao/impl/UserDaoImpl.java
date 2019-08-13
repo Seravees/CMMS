@@ -12,7 +12,7 @@ import com.hg.domain.User;
 import com.hg.util.Dao;
 
 public class UserDaoImpl implements IUserDao {
-
+	/***** 登录 *****/
 	@Override
 	public User find(String accountID, String psd) {
 		// TODO Auto-generated method stub
@@ -21,7 +21,8 @@ public class UserDaoImpl implements IUserDao {
 		try {
 			PreparedStatement pstmt = conn
 					.prepareStatement("select * from dbo.CMMS_Account "
-							+ "where AccountID = ? and PSD = ?");
+							+ "left join CMMS_AccountGroup on CMMS_Account.AccountGroupID=CMMS_AccountGroup.AccountGroupID "
+							+ "where AccountID = ? and PSD = ? ");
 			pstmt.setString(1, accountID);
 			pstmt.setString(2, psd);
 			ResultSet rs = pstmt.executeQuery();
@@ -33,6 +34,7 @@ public class UserDaoImpl implements IUserDao {
 				user.setTel(rs.getString("TEL"));
 				user.setAccountGroupID(rs.getString("AccountGroupID"));
 				user.setSecGroupID(rs.getString("SecGroupID"));
+				user.setAccountGroupName(rs.getString("AccountGroupName"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -42,6 +44,7 @@ public class UserDaoImpl implements IUserDao {
 		return user;
 	}
 
+	/***** 所有用戶查詢 *****/
 	@Override
 	public List<User> findAllUser() {
 		// TODO Auto-generated method stub
@@ -50,7 +53,9 @@ public class UserDaoImpl implements IUserDao {
 
 		try {
 			PreparedStatement pstmt = conn
-					.prepareStatement("select * from dbo.CMMS_Account where AccountGroupID <> '1'");
+					.prepareStatement("select * from dbo.CMMS_Account "
+							+ "left join CMMS_AccountGroup on CMMS_Account.AccountGroupID=CMMS_AccountGroup.AccountGroupID "
+							+ "where dbo.CMMS_Account.AccountGroupID <> '1'");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				User user = new User();
@@ -60,6 +65,7 @@ public class UserDaoImpl implements IUserDao {
 				user.setTel(rs.getString("TEL"));
 				user.setAccountGroupID(rs.getString("AccountGroupID"));
 				user.setSecGroupID(rs.getString("SecGroupID"));
+				user.setAccountGroupName(rs.getString("AccountGroupName"));
 				userList.add(user);
 			}
 		} catch (SQLException e) {
@@ -70,31 +76,38 @@ public class UserDaoImpl implements IUserDao {
 		return userList;
 	}
 
+	/***** 用戶查詢通過姓名 *****/
 	@Override
-	public User searchUser(String name) {
+	public List<User> searchUser(String name) {
 		// TODO Auto-generated method stub
-		User user = new User();
+
 		Connection conn = Dao.conn();
+		List<User> userList = new ArrayList<User>();
 
 		try {
 			PreparedStatement pstmt = conn
-					.prepareStatement("select * from dbo.CMMS_Account where Name = ?");
-			pstmt.setString(1, name);
+					.prepareStatement("select * from dbo.CMMS_Account "
+							+ "left join CMMS_AccountGroup on CMMS_Account.AccountGroupID=CMMS_AccountGroup.AccountGroupID "
+							+ "where Name like ? and dbo.CMMS_Account.AccountGroupID <> '1'");
+			pstmt.setString(1, "%" + name + "%");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
+				User user = new User();
 				user.setAccountID(rs.getString("AccountID"));
 				user.setPsd(rs.getString("PSD"));
 				user.setName(rs.getString("Name"));
 				user.setTel(rs.getString("TEL"));
 				user.setAccountGroupID(rs.getString("AccountGroupID"));
 				user.setSecGroupID(rs.getString("SecGroupID"));
+				user.setAccountGroupName(rs.getString("AccountGroupName"));
+				userList.add(user);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
-		return user;
+		return userList;
 	}
 
 	@Override

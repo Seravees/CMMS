@@ -6,6 +6,7 @@ public class User {
 	String name;
 	String tel;
 	String accountGroupID;
+	String accountGroupName;
 	String secGroupID;
 
 	public String getAccountGroupID() {
@@ -56,11 +57,20 @@ public class User {
 		this.tel = tel;
 	}
 
+	public String getAccountGroupName() {
+		return accountGroupName;
+	}
+
+	public void setAccountGroupName(String accountGroupName) {
+		this.accountGroupName = accountGroupName;
+	}
+
 	@Override
 	public String toString() {
 		return "User [accountID=" + accountID + ", psd=" + psd + ", name="
 				+ name + ", tel=" + tel + ", accountGroupID=" + accountGroupID
-				+ ", secGroupID=" + secGroupID + "]";
+				+ ", accountGroupName=" + accountGroupName + ", secGroupID="
+				+ secGroupID + "]";
 	}
 
 }

@@ -6,23 +6,19 @@ function doSearch() {
 			ByName : ByName
 		},
 		columns : [ [ {
-			field : 'accountID',
-			
+			field : 'accountID',		
 			title : '用户名',
 			fixed : true
 		}, {
 			field : 'name',
-			
 			title : '姓名',
 			fixed : true
 		}, {
-			field : 'tel',
-			
+			field : 'tel',		
 			title : '电话',
 			fixed : true
 		}, {
-			field : 'accountGroupID',
-			
+			field : 'accountGroupName',		
 			title : '角色',
 			fixed : true
 		} ] ],

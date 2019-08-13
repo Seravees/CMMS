@@ -1,31 +1,25 @@
 package com.hg.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-import com.hg.domain.User;
-import com.hg.service.IUserService;
-import com.hg.service.impl.UserServiceImpl;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ShowUserServlet
+ * Servlet implementation class ManageServlet
  */
-@WebServlet("/ShowUserServlet")
-public class ShowUserServlet extends HttpServlet {
+@WebServlet("/ManageServlet")
+public class ManageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ShowUserServlet() {
+	public ManageServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,16 +41,20 @@ public class ShowUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// System.out.println("flag");
-		IUserService service = new UserServiceImpl();
-		List<User> list = service.getUsers();
-
-		Gson gson = new Gson();
-		String json = gson.toJson(list);
-		System.out.println(json);
-		response.setContentType("text/json;charset=UTF-8");
-		PrintWriter writer = response.getWriter();
-		writer.write(json);
+		HttpSession session = request.getSession();
+		if (session == null) {
+			response.sendRedirect("/CMMS/index.jsp");
+			return;
+		}
+		String name = (String) session.getAttribute("name");
+		System.out.println(name);
+		if (name == null) {
+			response.sendRedirect("/CMMS/index.jsp");
+			return;
+		}
+		request.setAttribute("test", "");
+		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
+				request, response);
 	}
 
 }

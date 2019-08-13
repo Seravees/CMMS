@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UserServlet
@@ -40,6 +41,17 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		if (session == null) {
+			response.sendRedirect("/CMMS/index.jsp");
+			return;
+		}
+		String name = (String) session.getAttribute("name");
+		System.out.println(name);
+		if (name == null) {
+			response.sendRedirect("/CMMS/index.jsp");
+			return;
+		}
 
 		request.setAttribute(
 				"test",
@@ -79,8 +91,7 @@ public class UserServlet extends HttpServlet {
 						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-ok' onclick='saveUser()'>save</a>"
 						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-cancel' onclick='closeDlg()'>取消</a>"
 						+ "</div>"
-						+ "<script type='text/javascript' src='js/function.js'></script>"
-						+ "<script type='text/javascript' src='js/search.js'></script>");
+						+ "<script type='text/javascript' src='js/userFunction.js'></script>");
 		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
 				request, response);
 	}
