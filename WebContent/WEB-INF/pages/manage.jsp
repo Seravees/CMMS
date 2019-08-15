@@ -25,7 +25,7 @@ body {
 	height: 100%;
 }
 </style>
-<title>Insert title here</title>
+<title>管理</title>
 </head>
 <body>
 

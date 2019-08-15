@@ -13,7 +13,7 @@
 	href="js/easyUIDemo/themes/icon.css"></link>
 <link rel="stylesheet" type="text/css"
 	href="js/easyUIDemo/demo/demo.css"></link>
-<title>Insert title here</title>
+<title>登录</title>
 </head>
 <body>
 

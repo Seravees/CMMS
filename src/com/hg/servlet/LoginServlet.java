@@ -66,11 +66,12 @@ public class LoginServlet extends HttpServlet {
 			}
 			HttpSession session = request.getSession();
 			session.setAttribute("name", user.getName());
-			request.setAttribute("name", user.getName());
+			session.setAttribute("url", url);
+			//request.setAttribute("name", user.getName());
 			request.setAttribute("test", "");
-			request.setAttribute("test1", "user");
+			//request.setAttribute("test1", "user");
 			request.setAttribute("user", user);
-			System.out.println(url);
+			//System.out.println(url);
 			// response.sendRedirect(url);
 			//request.getRequestDispatcher(url).forward(request, response);
 			response.sendRedirect("/CMMS/manageServlet");

@@ -52,9 +52,10 @@ public class ManageServlet extends HttpServlet {
 			response.sendRedirect("/CMMS/index.jsp");
 			return;
 		}
+
 		request.setAttribute("test", "");
-		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
-				request, response);
+		request.getRequestDispatcher((String) session.getAttribute("url"))
+				.forward(request, response);
 	}
 
 }

@@ -48,18 +48,19 @@ public class EditUserServlet extends HttpServlet {
 		User user = new User();
 		user.setAccountID(request.getParameter("accountID"));
 		user.setPsd(request.getParameter("psd"));
-		user.setName(request.getParameter("name"));
+		user.setName(new String(request.getParameter("name").getBytes(
+				"ISO8859_1"), "UTF-8"));
 		user.setTel(request.getParameter("tel"));
 		user.setAccountGroupID(request.getParameter("accountGroupID"));
-		
+
 		IUserService service = new UserServiceImpl();
-		int rs=service.editUser(user.getAccountID(), user);
+		int rs = service.editUser(user.getAccountID(), user);
 		if (rs == 1) {
 			PrintWriter writer = response.getWriter();
 			writer.write("success edit");
 			writer.close();
 		} else {
-			//System.out.println("fail");
+			// System.out.println("fail");
 			PrintWriter writer = response.getWriter();
 			writer.write("fail edit");
 			writer.close();

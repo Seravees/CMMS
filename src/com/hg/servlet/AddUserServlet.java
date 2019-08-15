@@ -48,7 +48,8 @@ public class AddUserServlet extends HttpServlet {
 		User user = new User();
 		user.setAccountID(request.getParameter("accountID"));
 		user.setPsd(request.getParameter("psd"));
-		user.setName(request.getParameter("name"));
+		user.setName(new String(request.getParameter("name").getBytes(
+				"ISO8859_1"), "UTF-8"));
 		user.setTel(request.getParameter("tel"));
 		user.setAccountGroupID(request.getParameter("accountGroupID"));
 
@@ -59,7 +60,7 @@ public class AddUserServlet extends HttpServlet {
 			writer.write("success add");
 			writer.close();
 		} else {
-			//System.out.println("fail");
+			// System.out.println("fail");
 			PrintWriter writer = response.getWriter();
 			writer.write("fail add");
 			writer.close();
