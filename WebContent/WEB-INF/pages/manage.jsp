@@ -16,7 +16,7 @@
 	href="js/easyUIDemo/demo/demo.css"></link>
 <script type="text/javascript"
 	src="js/easyUIDemo/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="js/userFunction.js"></script>
+
 <style type="text/css">
 body {
 	margin: 0px;
@@ -83,5 +83,6 @@ body {
 			f.submit();
 		}
 	</script>
+	<script type="text/javascript" src="js/userFunction.js"></script>
 </body>
 </html>

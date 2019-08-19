@@ -14,7 +14,14 @@
 	href="js/easyUIDemo/demo/demo.css"></link>
 <script type="text/javascript"
 	src="js/easyUIDemo/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="js/malfunctionFunction.js"></script>
+<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+</style>
 <title>报修</title>
 </head>
 <body>
@@ -43,24 +50,44 @@
 
 		<div data-options="region:'center'" title=""
 			style="border-left: 0px; border-right: 0px;">
-			<table id='datagrid' class='easyui-datagrid' title='用户'
+			<table id='datagrid1' class='easyui-datagrid' title='报修'
 				style='border-left: 0px; border-right: 0px;' toolbar='#toolbar'
 				rownumbers='true' singleSelect='true'>
 			</table>
-			<div id='toolbar'></div>
+			<div id='toolbar'>
+				<a href='#' class='easyui-linkbutton' iconCls='icon-add'
+					plain='true' onclick='newMalfunction()'>新增报修</a> <a href='#'
+					class='easyui-linkbutton' iconCls='icon-edit' plain='true'
+					onclick='editMalfunction()'>维修确认</a><a href='#'
+					class='easyui-linkbutton' iconCls='icon-remove' plain='true'
+					onclick='removeUser()'>撤销报修</a>
+			</div>
+			<div id='dlg-add' class='easyui-dialog'
+				style='width: 400px; height: 280px; padding: 10px 20px'
+				closed='true' buttons='#dlg-buttons'>
+				<form id='fm-add' method='post'>
+					<div class='fitem'>
+						<label>设备名称：</label><input id='equipmentNo' name='equipmentNo'
+							class='easyui-validatebox' required='true'><a href='#'
+							class='easyui-linkbutton' iconCls='icon-search' plain='true'
+							onclick='doEquipmentSearch()'></a>
+					</div>
+					<br>
+				</form>
+			</div>
 		</div>
 	</div>
 
+
 	<script type="text/javascript">
 		var datalist = [ {
-			text : '用户管理',
+			text : '报修管理',
 			children : [ {
-				text : '用户管理'
-			} ]
-		}, {
-			text : '设备管理',
-			children : [ {
-				text : '设备管理'
+				text : '待维修'
+			}, {
+				text : '已维修'
+			}, {
+				text : '已确认'
 			} ]
 		} ]
 
@@ -77,5 +104,6 @@
 			f.submit();
 		}
 	</script>
+	<script type="text/javascript" src="js/malfunctionFunction.js"></script>
 </body>
 </html>

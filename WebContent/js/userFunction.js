@@ -58,7 +58,7 @@ function newUser() {
 	$('#accountID').validatebox({
 		editable : true
 	});
-	url = 'Save';
+	url = 'UserSave';
 }
 
 function saveUser() {
@@ -103,7 +103,7 @@ function editUser() {
 		$('#accountID').validatebox({
 			editable : false
 		});
-		url = 'Edit?accountID=' + row.accountID;
+		url = 'UserEdit?accountID=' + row.accountID;
 	}
 }
 
@@ -112,7 +112,7 @@ function removeUser() {
 	if (row) {
 		$.messager.confirm('Confirm', '确定删除此用户？', function(r) {
 			if (r) {
-				$.post('Delete', {
+				$.post('UserDelete', {
 					accountID : row.accountID
 				}, function(result) {
 					if (result== 'success delete') {

@@ -90,8 +90,9 @@ public class UserServlet extends HttpServlet {
 						+ "<div id='dlg-buttons'>"
 						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-ok' onclick='saveUser()'>save</a>"
 						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-cancel' onclick='closeDlg()'>取消</a>"
-						+ "</div>"
-						+ "<script type='text/javascript' src='js/userFunction.js'></script>");
+						+ "</div>");
+		// +
+		// "<script type='text/javascript' src='js/userFunction.js'></script>");
 		request.getRequestDispatcher("/WEB-INF/pages/manage.jsp").forward(
 				request, response);
 	}

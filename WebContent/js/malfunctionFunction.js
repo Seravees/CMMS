@@ -1,3 +1,31 @@
+$('#datagrid1').datagrid({
+	columns : [ [ {
+		field : 'malfunctionTime',
+		title : '报修日期',
+		fixed : true
+	}, {
+		field : 'equipmentNo',
+		title : '报修设备',
+		fixed : true
+	}, {
+		field : 'malfunctionRecords',
+		title : '报修故障描述',
+		fixed : true
+	}, {
+		field : 'malfunctionMan',
+		title : '报修人',
+		fixed : true
+	}, {
+		field : 'malfunctionState',
+		title : '状态',
+		fixed : true
+	} ] ],
+	fitColumns : true,
+	pagination : true,
+	url : 'malfunctionList',
+	loadFilter : pagerFilter
+});
+
 function pagerFilter(data) {
 	if (typeof data.length == 'number' && typeof data.splice == 'function') {
 		data = {
@@ -26,4 +54,14 @@ function pagerFilter(data) {
 	var end = start + parseInt(opts.pageSize);
 	data.rows = (data.originalRows.slice(start, end));
 	return data;
+}
+
+function newMalfunction() {
+	$('#dlg-add').dialog('open').dialog('setTitle', '新增报修记录');
+	$('#fm-add').form('clear');
+	url = '';
+}
+
+function oEquipmentSearch() {
+
 }
