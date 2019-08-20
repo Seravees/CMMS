@@ -82,12 +82,28 @@
     <url-pattern>/UserDelete</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>malfunctionList</servlet-name>
+    <servlet-name>malfunctionListServlet</servlet-name>
     <servlet-class>com.hg.servlet.MalfunctionListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>malfunctionList</servlet-name>
+    <servlet-name>malfunctionListServlet</servlet-name>
     <url-pattern>/malfunctionList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>malfunctionAddServlet</servlet-name>
+    <servlet-class>com.hg.servlet.AddMalfunctionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>malfunctionAddServlet</servlet-name>
+    <url-pattern>/malfunctionAdd</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>equipmentList</servlet-name>
+    <servlet-class>com.hg.servlet.EquipmentListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>equipmentList</servlet-name>
+    <url-pattern>/equipment</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>noCacheFilter</filter-name>

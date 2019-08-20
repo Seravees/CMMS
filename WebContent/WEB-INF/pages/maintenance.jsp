@@ -14,9 +14,17 @@
 	href="js/easyUIDemo/demo/demo.css"></link>
 <script type="text/javascript"
 	src="js/easyUIDemo/locale/easyui-lang-zh_CN.js"></script>
+	<style type="text/css">
+body {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+</style>
 <title>维修</title>
 </head>
 <body>
-
+<script type="text/javascript" src="js/maintenanceFunction.js"></script>
 </body>
 </html>

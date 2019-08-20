@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.hg.domain.MalfunctionRecords;
-import com.hg.service.IMalfunctionService;
-import com.hg.service.impl.MalfunctionServiceImpl;
+import com.hg.domain.Equipment;
+import com.hg.service.IEquipmentService;
+import com.hg.service.impl.EquipmentServiceImpl;
 
 /**
- * Servlet implementation class MalfunctionListServlet
+ * Servlet implementation class EquipmentServlet
  */
-@WebServlet("/MalfunctionListServlet")
-public class MalfunctionListServlet extends HttpServlet {
+@WebServlet("/EquipmentServlet")
+public class EquipmentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MalfunctionListServlet() {
+	public EquipmentListServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,8 +47,8 @@ public class MalfunctionListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		IMalfunctionService malfunctionService = new MalfunctionServiceImpl();
-		List<MalfunctionRecords> list = malfunctionService.getMalfunction();
+		IEquipmentService equipmentService = new EquipmentServiceImpl();
+		List<Equipment> list = equipmentService.getEquipment();
 
 		Gson gson = new Gson();
 		String json = gson.toJson(list);
@@ -56,7 +56,7 @@ public class MalfunctionListServlet extends HttpServlet {
 		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		writer.write(json);
-		System.out.println(request.getSession().getAttribute("name"));
+		// System.out.println("flag");
 	}
 
 }

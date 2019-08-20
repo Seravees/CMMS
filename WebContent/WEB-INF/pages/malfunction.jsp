@@ -50,7 +50,7 @@ body {
 
 		<div data-options="region:'center'" title=""
 			style="border-left: 0px; border-right: 0px;">
-			<table id='datagrid1' class='easyui-datagrid' title='报修'
+			<table id='datagrid' class='easyui-datagrid' title='报修'
 				style='border-left: 0px; border-right: 0px;' toolbar='#toolbar'
 				rownumbers='true' singleSelect='true'>
 			</table>
@@ -67,13 +67,43 @@ body {
 				closed='true' buttons='#dlg-buttons'>
 				<form id='fm-add' method='post'>
 					<div class='fitem'>
-						<label>设备名称：</label><input id='equipmentNo' name='equipmentNo'
+						<label>设备编号：</label><input id='equipmentNo' name='equipmentNo'
 							class='easyui-validatebox' required='true'><a href='#'
 							class='easyui-linkbutton' iconCls='icon-search' plain='true'
 							onclick='doEquipmentSearch()'></a>
 					</div>
 					<br>
+					<div class='fitem'>
+						<label>设备内部名称：</label><input id='equipmentNameInside'
+							name='equipmentNameInside' class='easyui-validatebox'
+							required='true'>
+					</div>
+					<br>
+					<div class='fitem'>
+						<label>设备外部名称：</label><input id='equipmentNameOutside'
+							name='equipmentNameOutside' class='easyui-validatebox'
+							required='true'>
+					</div>
+					<br>
+					<div class='fitem'>
+						<label>设备故障描述：</label><input id='malfunctionRecords'
+							name='malfunctionRecords' class='easyui-validatebox'
+							required='true'>
+					</div>
+					<br>
+					<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
+					onclick='malfunctionConfirm()'>确认</a>
 				</form>
+			</div>
+			<div id='dlg-equipment' class='easyui-dialog'
+				style='width: 600px; height: 400px;' closed='true'
+				buttons='#dlg-buttons'>
+				<table id='datagrid-equipment' class='easyui-datagrid'
+					style='border-left: 0px; border-right: 0px;'
+					toolbar='#toolbar-equipment' rownumbers='true' singleSelect='true'>
+				</table>
+				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
+					onclick='equipmentConfirm()'>确认</a>
 			</div>
 		</div>
 	</div>

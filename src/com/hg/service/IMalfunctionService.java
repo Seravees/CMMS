@@ -6,4 +6,6 @@ import com.hg.domain.MalfunctionRecords;
 
 public interface IMalfunctionService {
 	List<MalfunctionRecords> getMalfunction();
+
+	int addMalfunction(MalfunctionRecords mr);
 }

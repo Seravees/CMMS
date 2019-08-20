@@ -8,12 +8,18 @@ import com.hg.domain.MalfunctionRecords;
 import com.hg.service.IMalfunctionService;
 
 public class MalfunctionServiceImpl implements IMalfunctionService {
-	private IMalfunctionDao MalfunctionDao = new MalfunctionDaoImpl();
+	private IMalfunctionDao malfunctionDao = new MalfunctionDaoImpl();
 
 	@Override
 	public List<MalfunctionRecords> getMalfunction() {
 		// TODO Auto-generated method stub
-		return MalfunctionDao.findAllMalfunction();
+		return malfunctionDao.findAllMalfunction();
+	}
+
+	@Override
+	public int addMalfunction(MalfunctionRecords mr) {
+		// TODO Auto-generated method stub
+		return malfunctionDao.addMalfunction(mr);
 	}
 
 }
