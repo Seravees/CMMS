@@ -98,12 +98,20 @@
     <url-pattern>/malfunctionAdd</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>equipmentList</servlet-name>
+    <servlet-name>equipmentListServlet</servlet-name>
     <servlet-class>com.hg.servlet.EquipmentListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>equipmentList</servlet-name>
+    <servlet-name>equipmentListServlet</servlet-name>
     <url-pattern>/equipment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>maintenanceListServlet</servlet-name>
+    <servlet-class>com.hg.servlet.MaintenanceListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>maintenanceListServlet</servlet-name>
+    <url-pattern>/maintenanceList</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>noCacheFilter</filter-name>

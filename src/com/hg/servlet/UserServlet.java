@@ -41,6 +41,7 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("UserServlet");
 		HttpSession session = request.getSession();
 		if (session == null) {
 			response.sendRedirect("/CMMS/index.jsp");

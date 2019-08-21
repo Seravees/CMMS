@@ -11,21 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.hg.domain.MaintenanceRecords;
 import com.hg.domain.MalfunctionRecords;
-import com.hg.service.IMalfunctionService;
-import com.hg.service.impl.MalfunctionServiceImpl;
+import com.hg.service.IMaintenanceService;
+import com.hg.service.impl.MaintenanceServiceImpl;
 
 /**
- * Servlet implementation class MalfunctionListServlet
+ * Servlet implementation class MaintenanceListServlet
  */
-@WebServlet("/MalfunctionListServlet")
-public class MalfunctionListServlet extends HttpServlet {
+@WebServlet("/MaintenanceListServlet")
+public class MaintenanceListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MalfunctionListServlet() {
+	public MaintenanceListServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,10 +48,15 @@ public class MalfunctionListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("MalfunctionListServlet");
-		IMalfunctionService malfunctionService = new MalfunctionServiceImpl();
-		List<MalfunctionRecords> list = malfunctionService.getMalfunction();
+		System.out.println("MaintenanceListServlet");
+		IMaintenanceService maintenanceService = new MaintenanceServiceImpl();
 
+		MalfunctionRecords malr = new MalfunctionRecords();
+		malr.setMalfunctionId(request.getParameter("malfunctionId"));
+
+		List<MaintenanceRecords> list = maintenanceService
+				.getMaintenanceRecordsByMalfunction(malr);
+		
 		Gson gson = new Gson();
 		String json = gson.toJson(list);
 		System.out.println(json);
@@ -58,6 +64,7 @@ public class MalfunctionListServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		writer.write(json);
 		System.out.println(request.getSession().getAttribute("name"));
+
 	}
 
 }

@@ -90,9 +90,8 @@ body {
 							name='malfunctionRecords' class='easyui-validatebox'
 							required='true'>
 					</div>
-					<br>
-					<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
-					onclick='malfunctionConfirm()'>确认</a>
+					<br> <a href='#' class='easyui-linkbutton' iconCls='icon-ok'
+						onclick='malfunctionConfirm()'>确认</a>
 				</form>
 			</div>
 			<div id='dlg-equipment' class='easyui-dialog'
