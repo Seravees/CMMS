@@ -88,6 +88,12 @@ function detail() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
 		$('#dlg-maintenance').dialog('open').dialog('setTitle', '维修记录');
+		$('#equipmentNo').textbox({
+			value : row.equipmentNo
+		});
+		$('#malfunctionId').textbox({
+			value : row.malfunctionId
+		});
 		url = 'maintenanceList?malfunctionId=' + row.malfunctionId;
 		$('#datagrid-maintenance').datagrid('options').url = url;
 		$('#datagrid-maintenance').datagrid('load');
@@ -97,4 +103,50 @@ function detail() {
 
 function maintenanceAdd() {
 	$('#dlg-maintenanceAdd').dialog('open').dialog('setTitle', '维修记录添加');
+	$('#fm').form('clear');
+	$('#equipmentNo-maintenanceAdd').textbox({
+		value : $('#equipmentNo').val()
+	});
+	$('#malfunctionId-maintenanceAdd').textbox({
+		value : $('#malfunctionId').val()
+	});
+}
+
+function saveMaintenance() {
+	$('#fm').form('submit', {
+		url : 'maintenanceAdd',
+		onSubmit : function() {
+			// return $(this).form('validate');
+			// alert('a')
+		},
+		success : function(res) {
+			if (res == 'fail add') {
+				$.messager.show({
+					title : 'Error',
+					msg : '添加失败'
+				});
+			} else if (res == 'success add') {
+				$.messager.show({
+					title : 'Success',
+					msg : '添加成功'
+				});
+			} else if (res == 'fail edit') {
+				$.messager.show({
+					title : 'Error',
+					msg : '修改失败'
+				});
+			} else if (res == 'success edit') {
+				$.messager.show({
+					title : 'Success',
+					msg : '修改成功'
+				});
+			}
+			$('#dlg-maintenanceAdd').dialog('close');
+			$('#datagrid-maintenance').datagrid('reload');
+		}
+	});
+}
+
+function closeDlg() {
+	$('#dlg-maintenanceAdd').dialog('close');
 }

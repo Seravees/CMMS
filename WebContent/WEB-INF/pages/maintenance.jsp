@@ -60,6 +60,9 @@ body {
 			<div id='dlg-maintenance' class='easyui-dialog'
 				style='width: 600px; height: 400px;' closed='true'
 				buttons='#dlg-buttons'>
+				<label>设备</label><input id='equipmentNo' name='equipmentNo'
+					class='easyui-textbox'><label>报修</label><input
+					id='malfunctionId' name='malfunctionId' class='easyui-textbox'>
 				<table id='datagrid-maintenance' class='easyui-datagrid'
 					style='border-left: 0px; border-right: 0px;'
 					toolbar='#toolbar-maintenance' rownumbers='true'
@@ -72,8 +75,43 @@ body {
 			</div>
 
 			<div id='dlg-maintenanceAdd' class='easyui-dialog'
-				style='width: 600px; height: 400px;' closed='true'
-				buttons='#dlg-buttons'></div>
+				style='width: 600px; height: 500px;' closed='true'
+				buttons='#dlg-buttons'>
+				<form id='fm' method='post'>
+					<label>设备</label><input id='equipmentNo-maintenanceAdd'
+						name='equipmentNo-maintenanceAdd' class='easyui-textbox'><label>报修</label><input
+						id='malfunctionId-maintenanceAdd'
+						name='malfunctionId-maintenanceAdd' class='easyui-textbox'>
+					<div class='fitem'>
+						<label>维修详细描述</label><br> <input id='mResultRecords'
+							name='mResultRecords' class='easyui-textbox'
+							data-options='multiline:true' required='true'
+							style='width: 400px; height: 100px'>
+					</div>
+					<br>
+					<div class='fitem'>
+						<label>维修开始时间</label><br> <input id='mStarttime'
+							name='mStarttime' class='easyui-datetimebox'>
+					</div>
+					<br>
+					<div class='fitem'>
+						<label>维修结束时间</label> <br> <input id='mEndtime'
+							name='mEndtime' class='easyui-datetimebox'>
+					</div>
+					<br>
+					<div class='fitem'>
+						<label>备 注</label><br> <input id='mRemark' name='mRemark'
+							class='easyui-textbox' data-options='multiline:true'
+							style='width: 400px; height: 50px'>
+					</div>
+				</form>
+			</div>
+			<div id='dlg-buttons'>
+				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
+					onclick='saveMaintenance()'>save</a> <a href='#'
+					class='easyui-linkbutton' iconCls='icon-cancel'
+					onclick='closeDlg()'>取消</a>
+			</div>
 		</div>
 	</div>
 

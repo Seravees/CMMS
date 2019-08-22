@@ -8,4 +8,6 @@ import com.hg.domain.MalfunctionRecords;
 public interface IMaintenanceDao {
 	List<MaintenanceRecords> getMaintenanceRecordsByMalfunctionRecords(
 			MalfunctionRecords malr);
+
+	int addMaintenanceRecords(MaintenanceRecords mr);
 }

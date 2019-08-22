@@ -113,6 +113,14 @@
     <servlet-name>maintenanceListServlet</servlet-name>
     <url-pattern>/maintenanceList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>maintenanceAddServlet</servlet-name>
+    <servlet-class>com.hg.servlet.AddMaintenanceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>maintenanceAddServlet</servlet-name>
+    <url-pattern>/maintenanceAdd</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>noCacheFilter</filter-name>
     <filter-class>com.hg.filter.NoCacheFilter</filter-class>

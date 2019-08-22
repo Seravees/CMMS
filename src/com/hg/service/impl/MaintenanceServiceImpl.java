@@ -17,4 +17,10 @@ public class MaintenanceServiceImpl implements IMaintenanceService {
 		// TODO Auto-generated method stub
 		return maintenanceDao.getMaintenanceRecordsByMalfunctionRecords(malr);
 	}
+
+	@Override
+	public int addMaintenanceRecords(MaintenanceRecords mr) {
+		// TODO Auto-generated method stub
+		return maintenanceDao.addMaintenanceRecords(mr);
+	}
 }

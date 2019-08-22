@@ -6,5 +6,8 @@ import com.hg.domain.MaintenanceRecords;
 import com.hg.domain.MalfunctionRecords;
 
 public interface IMaintenanceService {
-List<MaintenanceRecords> getMaintenanceRecordsByMalfunction(MalfunctionRecords malr);
+	List<MaintenanceRecords> getMaintenanceRecordsByMalfunction(
+			MalfunctionRecords malr);
+
+	int addMaintenanceRecords(MaintenanceRecords mr);
 }

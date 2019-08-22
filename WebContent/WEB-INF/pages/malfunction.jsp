@@ -67,26 +67,26 @@ body {
 				closed='true' buttons='#dlg-buttons'>
 				<form id='fm-add' method='post'>
 					<div class='fitem'>
-						<label>设备编号：</label><input id='equipmentNo' name='equipmentNo'
-							class='easyui-validatebox' required='true'><a href='#'
-							class='easyui-linkbutton' iconCls='icon-search' plain='true'
-							onclick='doEquipmentSearch()'></a>
+						<label>设备编号：</label><br> <input id='equipmentNo'
+							name='equipmentNo' class='easyui-validatebox' required='true'><a
+							href='#' class='easyui-linkbutton' iconCls='icon-search'
+							plain='true' onclick='doEquipmentSearch()'></a>
 					</div>
 					<br>
 					<div class='fitem'>
-						<label>设备内部名称：</label><input id='equipmentNameInside'
+						<label>设备内部名称：</label><br> <input id='equipmentNameInside'
 							name='equipmentNameInside' class='easyui-validatebox'
 							required='true'>
 					</div>
 					<br>
 					<div class='fitem'>
-						<label>设备外部名称：</label><input id='equipmentNameOutside'
+						<label>设备外部名称：</label><br> <input id='equipmentNameOutside'
 							name='equipmentNameOutside' class='easyui-validatebox'
 							required='true'>
 					</div>
 					<br>
 					<div class='fitem'>
-						<label>设备故障描述：</label><input id='malfunctionRecords'
+						<label>设备故障描述：</label><br> <input id='malfunctionRecords'
 							name='malfunctionRecords' class='easyui-validatebox'
 							required='true'>
 					</div>

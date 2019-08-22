@@ -1,8 +1,6 @@
 package com.hg.servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,21 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.hg.domain.MalfunctionRecords;
-import com.hg.service.IMalfunctionService;
-import com.hg.service.impl.MalfunctionServiceImpl;
+import com.hg.domain.MaintenanceRecords;
+import com.hg.service.IMaintenanceService;
+import com.hg.service.impl.MaintenanceServiceImpl;
 
 /**
- * Servlet implementation class AddMalfunctionServlet
+ * Servlet implementation class AddMaintenanceServlet
  */
-@WebServlet("/AddMalfunctionServlet")
-public class AddMalfunctionServlet extends HttpServlet {
+@WebServlet("/AddMaintenanceServlet")
+public class AddMaintenanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddMalfunctionServlet() {
+	public AddMaintenanceServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,20 +45,26 @@ public class AddMalfunctionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("AddMalfunctionServlet");
-		IMalfunctionService malfunctionService = new MalfunctionServiceImpl();
+		System.out.println("AddMaintenanceServlet");
+		IMaintenanceService maintenanceService = new MaintenanceServiceImpl();
+
 		HttpSession session = request.getSession();
-		MalfunctionRecords mr = new MalfunctionRecords();
-		mr.setEquipmentNo(request.getParameter("equipmentNo"));
-		mr.setMalfunctionRecords(new String(request.getParameter(
-				"malfunctionRecords").getBytes("ISO8859_1"), "UTF-8"));
-		mr.setMalfunctionMan((String) session.getAttribute("name"));
-		mr.setMalfunctionState("1");
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		mr.setMalfunctionTime(sdf.format(date));
+		MaintenanceRecords mr = new MaintenanceRecords();
+		mr.setEquipmentNo(request.getParameter("equipmentNo-maintenanceAdd"));
+		mr.setMalfunctionId(request
+				.getParameter("malfunctionId-maintenanceAdd"));
+		mr.setmResultRecords(new String(request.getParameter("mResultRecords")
+				.getBytes("ISO8859_1"), "UTF-8"));
+		mr.setmStarttime(request.getParameter("mStarttime"));
+		mr.setmEndtime(request.getParameter("mEndtime"));
+		mr.setmManName((String) session.getAttribute("name"));
+		mr.setmState("");
+		mr.setmRemark(new String(request.getParameter("mRemark").getBytes(
+				"ISO8859_1"), "UTF-8"));
+
 		System.out.println(mr.toString());
-		malfunctionService.addMalfunction(mr);
+
+		maintenanceService.addMaintenanceRecords(mr);
 	}
 
 }
