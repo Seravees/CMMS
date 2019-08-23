@@ -58,51 +58,63 @@ body {
 				<a href='#' class='easyui-linkbutton' iconCls='icon-add'
 					plain='true' onclick='newMalfunction()'>新增报修</a> <a href='#'
 					class='easyui-linkbutton' iconCls='icon-edit' plain='true'
-					onclick='editMalfunction()'>维修确认</a><a href='#'
+					onclick='confirmMalfunction()'>维修确认</a><a href='#'
 					class='easyui-linkbutton' iconCls='icon-remove' plain='true'
-					onclick='removeUser()'>撤销报修</a>
+					onclick='removeMalfunction()'>撤销报修</a>
 			</div>
 			<div id='dlg-add' class='easyui-dialog'
-				style='width: 400px; height: 280px; padding: 10px 20px'
-				closed='true' buttons='#dlg-buttons'>
+				style='width: 400px; height: 400px; padding: 10px 20px'
+				closed='true'>
 				<form id='fm-add' method='post'>
 					<div class='fitem'>
 						<label>设备编号：</label><br> <input id='equipmentNo'
-							name='equipmentNo' class='easyui-validatebox' required='true'><a
-							href='#' class='easyui-linkbutton' iconCls='icon-search'
-							plain='true' onclick='doEquipmentSearch()'></a>
+							name='equipmentNo' class='easyui-textbox' required='true'
+							style='width: 300px'><a href='#'
+							class='easyui-linkbutton' iconCls='icon-search' plain='true'
+							onclick='doEquipmentSearch()'></a>
 					</div>
 					<br>
 					<div class='fitem'>
 						<label>设备内部名称：</label><br> <input id='equipmentNameInside'
-							name='equipmentNameInside' class='easyui-validatebox'
-							required='true'>
+							name='equipmentNameInside' class='easyui-textbox' required='true'
+							style='width: 300px'>
 					</div>
 					<br>
 					<div class='fitem'>
 						<label>设备外部名称：</label><br> <input id='equipmentNameOutside'
-							name='equipmentNameOutside' class='easyui-validatebox'
-							required='true'>
+							name='equipmentNameOutside' class='easyui-textbox'
+							required='true' style='width: 300px'>
 					</div>
 					<br>
 					<div class='fitem'>
 						<label>设备故障描述：</label><br> <input id='malfunctionRecords'
-							name='malfunctionRecords' class='easyui-validatebox'
-							required='true'>
+							name='malfunctionRecords' class='easyui-textbox'
+							data-options='multiline:true' required='true'
+							style='width: 300px; height: 50px'>
 					</div>
 					<br> <a href='#' class='easyui-linkbutton' iconCls='icon-ok'
 						onclick='malfunctionConfirm()'>确认</a>
 				</form>
 			</div>
-			<div id='dlg-equipment' class='easyui-dialog'
-				style='width: 600px; height: 400px;' closed='true'
-				buttons='#dlg-buttons'>
+			<div id='dlg-equipment' class='easyui-dialog' closed='true'>
 				<table id='datagrid-equipment' class='easyui-datagrid'
 					style='border-left: 0px; border-right: 0px;'
 					toolbar='#toolbar-equipment' rownumbers='true' singleSelect='true'>
 				</table>
 				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
 					onclick='equipmentConfirm()'>确认</a>
+			</div>
+			<div id='dlg-maintenance' class='easyui-dialog' closed='true'
+				buttons='#dlg-buttons'>
+				<table id='datagrid-maintenance' class='easyui-datagrid'
+					style='border-left: 0px; border-right: 0px;'
+					toolbar='#toolbar-maintenance' rownumbers='true'
+					singleSelect='true'></table>
+			</div>
+			<div id='dlg-buttons'>
+				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
+					onclick='confirm()'>确认</a> <a href='#' class='easyui-linkbutton'
+					iconCls='icon-cancel' onclick='retract()'>撤回</a>
 			</div>
 		</div>
 	</div>

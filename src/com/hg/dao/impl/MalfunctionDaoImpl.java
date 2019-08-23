@@ -68,4 +68,24 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 		return rs;
 	}
 
+	@Override
+	public int editMalfunctionState(String malfunctionId,
+			String malfunctionState) {
+		// TODO Auto-generated method stub
+		Connection conn = Dao.conn();
+		int rs = 0;
+		try {
+			PreparedStatement pstmt = conn
+					.prepareStatement("update dbo.CMMS_MalfunctionRecords "
+							+ "set MalfunctionState=? where MalfunctionID=?");
+			pstmt.setString(1, malfunctionState);
+			pstmt.setString(2, malfunctionId);
+			rs = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
 }

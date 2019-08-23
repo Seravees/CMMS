@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import com.hg.domain.MaintenanceRecords;
 import com.hg.service.IMaintenanceService;
+import com.hg.service.IMalfunctionService;
 import com.hg.service.impl.MaintenanceServiceImpl;
+import com.hg.service.impl.MalfunctionServiceImpl;
 
 /**
  * Servlet implementation class AddMaintenanceServlet
@@ -47,6 +49,7 @@ public class AddMaintenanceServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("AddMaintenanceServlet");
 		IMaintenanceService maintenanceService = new MaintenanceServiceImpl();
+		IMalfunctionService malfunctionService = new MalfunctionServiceImpl();
 
 		HttpSession session = request.getSession();
 		MaintenanceRecords mr = new MaintenanceRecords();
@@ -65,6 +68,7 @@ public class AddMaintenanceServlet extends HttpServlet {
 		System.out.println(mr.toString());
 
 		maintenanceService.addMaintenanceRecords(mr);
+		malfunctionService.editMalfunctionState(mr.getMalfunctionId(), "2");
 	}
 
 }

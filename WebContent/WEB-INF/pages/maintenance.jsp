@@ -58,8 +58,7 @@ body {
 			</div>
 
 			<div id='dlg-maintenance' class='easyui-dialog'
-				style='width: 600px; height: 400px;' closed='true'
-				buttons='#dlg-buttons'>
+				style='width: 600px; height: 400px;' closed='true'>
 				<label>设备</label><input id='equipmentNo' name='equipmentNo'
 					class='easyui-textbox'><label>报修</label><input
 					id='malfunctionId' name='malfunctionId' class='easyui-textbox'>

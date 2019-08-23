@@ -66,6 +66,34 @@ $('#datagrid-equipment').datagrid({
 	loadFilter : pagerFilter
 });
 
+$('#datagrid-maintenance').datagrid({
+	columns : [ [ {
+		field : 'mStarttime',
+		title : '维修开始时间',
+		fixed : true
+	}, {
+		field : 'mEndtime',
+		title : '维修结束时间',
+		fixed : true
+	}, {
+		field : 'mResultRecords',
+		title : '维修描述',
+		fixed : true
+	}, {
+		field : 'mManName',
+		title : '维修人',
+		fixed : true
+	}, {
+		field : 'mRemark',
+		title : '备注',
+		fixed : true
+	} ] ],
+	fitColumns : true,
+	pagination : true,
+	// url : 'maintenanceList',
+	loadFilter : pagerFilter
+});
+
 function pagerFilter(data) {
 	if (typeof data.length == 'number' && typeof data.splice == 'function') {
 		data = {
@@ -99,7 +127,7 @@ function pagerFilter(data) {
 function newMalfunction() {
 	$('#dlg-add').dialog('open').dialog('setTitle', '新增报修记录');
 	$('#fm-add').form('clear');
-	url = '';
+	// url = '';
 }
 
 function doEquipmentSearch() {
@@ -109,9 +137,15 @@ function doEquipmentSearch() {
 function equipmentConfirm() {
 	var row = $('#datagrid-equipment').datagrid('getSelected');
 	if (row) {
-		$('#equipmentNo').val(row.equipmentNo);
-		$('#equipmentNameInside').val(row.equipmentNameInside);
-		$('#equipmentNameOutside').val(row.equipmentNameOutside);
+		$('#equipmentNo').textbox({
+			value : row.equipmentNo
+		});
+		$('#equipmentNameInside').textbox({
+			value : row.equipmentNameInside
+		});
+		$('#equipmentNameOutside').textbox({
+			value : row.equipmentNameOutside
+		});
 		$('#dlg-equipment').dialog('close');
 	}
 }
@@ -148,4 +182,24 @@ function malfunctionConfirm() {
 			$('#datagrid').datagrid('reload');
 		}
 	});
+}
+
+function confirmMalfunction() {
+	var row = $('#datagrid').datagrid('getSelected');
+	if (row) {
+		$('#dlg-maintenance').dialog('open').dialog('setTitle', '维修确认');
+		url = 'maintenanceList?malfunctionId=' + row.malfunctionId;
+		$('#datagrid-maintenance').datagrid('options').url = url;
+		$('#datagrid-maintenance').datagrid('load');
+	}
+}
+
+function confirm() {
+
+	$('#dlg-maintenance').dialog('close');
+}
+
+function retract() {
+
+	$('#dlg-maintenance').dialog('close');
 }

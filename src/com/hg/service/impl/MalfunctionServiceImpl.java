@@ -22,4 +22,11 @@ public class MalfunctionServiceImpl implements IMalfunctionService {
 		return malfunctionDao.addMalfunction(mr);
 	}
 
+	@Override
+	public int editMalfunctionState(String malfunctionId,
+			String malfunctionState) {
+		// TODO Auto-generated method stub
+		return malfunctionDao.editMalfunctionState(malfunctionId, malfunctionState);
+	}
+
 }
