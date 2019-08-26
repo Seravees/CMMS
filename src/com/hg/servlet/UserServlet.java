@@ -71,7 +71,7 @@ public class UserServlet extends HttpServlet {
 						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-search' plain='true' onclick='doSearch()'>"
 						+ "查找用户</a>"
 						+ "</div>"
-						+ "<div id='dlg' class='easyui-dialog' style='width:400px;height:280px;padding:10px 20px' closed='true'  buttons='#dlg-buttons'>"
+						+ "<div id='dlg' class='easyui-dialog' style='width:400px;height:380px;padding:10px 20px' closed='true'  buttons='#dlg-buttons'>"
 						+ "<form id='fm' method='post'>"
 						+ "<div class='fitem'><label>用户名：</label><br>"
 						+ "<input id='accountID' name='accountID' class='easyui-validatebox' required='true'></div><br>"

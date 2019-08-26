@@ -62,7 +62,7 @@ $('#datagrid-equipment').datagrid({
 	} ] ],
 	fitColumns : true,
 	pagination : true,
-	url : 'equipment',
+	// url : 'equipment',
 	loadFilter : pagerFilter
 });
 
@@ -131,6 +131,8 @@ function newMalfunction() {
 }
 
 function doEquipmentSearch() {
+	$('#datagrid-equipment').datagrid('options').url = 'equipment';
+	$('#datagrid-equipment').datagrid('load');
 	$('#dlg-equipment').dialog('open').dialog('setTitle', '设备选择');
 }
 
@@ -188,6 +190,12 @@ function confirmMalfunction() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
 		$('#dlg-maintenance').dialog('open').dialog('setTitle', '维修确认');
+		$('#equipmentNo-confirm').textbox({
+			value : row.equipmentNo
+		});
+		$('#malfunctionId-confirm').textbox({
+			value : row.malfunctionId
+		});
 		url = 'maintenanceList?malfunctionId=' + row.malfunctionId;
 		$('#datagrid-maintenance').datagrid('options').url = url;
 		$('#datagrid-maintenance').datagrid('load');
@@ -195,11 +203,17 @@ function confirmMalfunction() {
 }
 
 function confirm() {
-
+	url = 'malfunctionList?confirm=1&malfunctionId='
+			+ $('#malfunctionId-confirm').val();
+	$('#datagrid').datagrid('options').url = url;
+	$('#datagrid').datagrid('load');
 	$('#dlg-maintenance').dialog('close');
 }
 
 function retract() {
-
+	url = 'malfunctionList?confirm=2&malfunctionId='
+			+ $('#malfunctionId-confirm').val();
+	$('#datagrid').datagrid('options').url = url;
+	$('#datagrid').datagrid('load');
 	$('#dlg-maintenance').dialog('close');
 }

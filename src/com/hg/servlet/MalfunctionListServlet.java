@@ -48,7 +48,22 @@ public class MalfunctionListServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("MalfunctionListServlet");
+
 		IMalfunctionService malfunctionService = new MalfunctionServiceImpl();
+
+		String confirm = null;
+		confirm = request.getParameter("confirm");
+		String malfunctionId = request.getParameter("malfunctionId");
+		//System.out.println(confirm);
+		if (confirm != null) {
+			if (confirm.equals("1")) {
+				malfunctionService.editMalfunctionState(malfunctionId, "3");
+			} else if (confirm.equals("2")) {
+				System.out.println(malfunctionId);
+				malfunctionService.editMalfunctionState(malfunctionId, "1");
+			}
+		}
+
 		List<MalfunctionRecords> list = malfunctionService.getMalfunction();
 
 		Gson gson = new Gson();

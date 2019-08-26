@@ -25,7 +25,9 @@ body {
 <title>维修</title>
 </head>
 <body>
+
 	<div class="easyui-layout" style="height: 550px">
+
 		<div data-options="region:'north',split:true,collapsible:false"
 			style="height: 50px">
 			<%=session.getAttribute("name")%>
@@ -48,6 +50,7 @@ body {
 
 		<div data-options="region:'center'" title=""
 			style="border-left: 0px; border-right: 0px;">
+
 			<table id='datagrid' class='easyui-datagrid' title='维修'
 				style='border-left: 0px; border-right: 0px;' toolbar='#toolbar'
 				rownumbers='true' singleSelect='true'>
@@ -58,10 +61,12 @@ body {
 			</div>
 
 			<div id='dlg-maintenance' class='easyui-dialog'
-				style='width: 600px; height: 400px;' closed='true'>
+				style='padding: 10px 20px' closed='true'>
 				<label>设备</label><input id='equipmentNo' name='equipmentNo'
 					class='easyui-textbox'><label>报修</label><input
 					id='malfunctionId' name='malfunctionId' class='easyui-textbox'>
+				<div></div>
+				<br>
 				<table id='datagrid-maintenance' class='easyui-datagrid'
 					style='border-left: 0px; border-right: 0px;'
 					toolbar='#toolbar-maintenance' rownumbers='true'
@@ -74,13 +79,15 @@ body {
 			</div>
 
 			<div id='dlg-maintenanceAdd' class='easyui-dialog'
-				style='width: 600px; height: 500px;' closed='true'
-				buttons='#dlg-buttons'>
+				style='width: 600px; height: 500px; padding: 10px 20px'
+				closed='true' buttons='#dlg-buttons'>
 				<form id='fm' method='post'>
 					<label>设备</label><input id='equipmentNo-maintenanceAdd'
 						name='equipmentNo-maintenanceAdd' class='easyui-textbox'><label>报修</label><input
 						id='malfunctionId-maintenanceAdd'
 						name='malfunctionId-maintenanceAdd' class='easyui-textbox'>
+					<div></div>
+					<br>
 					<div class='fitem'>
 						<label>维修详细描述</label><br> <input id='mResultRecords'
 							name='mResultRecords' class='easyui-textbox'
@@ -96,12 +103,6 @@ body {
 					<div class='fitem'>
 						<label>维修结束时间</label> <br> <input id='mEndtime'
 							name='mEndtime' class='easyui-datetimebox'>
-					</div>
-					<br>
-					<div class='fitem'>
-						<label>备 注</label><br> <input id='mRemark' name='mRemark'
-							class='easyui-textbox' data-options='multiline:true'
-							style='width: 400px; height: 50px'>
 					</div>
 				</form>
 			</div>

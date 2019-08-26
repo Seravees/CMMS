@@ -50,6 +50,7 @@ body {
 
 		<div data-options="region:'center'" title=""
 			style="border-left: 0px; border-right: 0px;">
+
 			<table id='datagrid' class='easyui-datagrid' title='报修'
 				style='border-left: 0px; border-right: 0px;' toolbar='#toolbar'
 				rownumbers='true' singleSelect='true'>
@@ -62,6 +63,7 @@ body {
 					class='easyui-linkbutton' iconCls='icon-remove' plain='true'
 					onclick='removeMalfunction()'>撤销报修</a>
 			</div>
+
 			<div id='dlg-add' class='easyui-dialog'
 				style='width: 400px; height: 400px; padding: 10px 20px'
 				closed='true'>
@@ -96,22 +98,33 @@ body {
 						onclick='malfunctionConfirm()'>确认</a>
 				</form>
 			</div>
-			<div id='dlg-equipment' class='easyui-dialog' closed='true'>
+
+			<div id='dlg-equipment' class='easyui-dialog' closed='true'
+				buttons='#dlg-equipment-buttons' style='padding: 10px 20px'>
 				<table id='datagrid-equipment' class='easyui-datagrid'
-					style='border-left: 0px; border-right: 0px;'
+					style='border-left: 0px; border-right: 0px'
 					toolbar='#toolbar-equipment' rownumbers='true' singleSelect='true'>
 				</table>
+			</div>
+			<div id='dlg-equipment-buttons'>
 				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
 					onclick='equipmentConfirm()'>确认</a>
 			</div>
+
 			<div id='dlg-maintenance' class='easyui-dialog' closed='true'
-				buttons='#dlg-buttons'>
+				buttons='#dlg-maintenance-buttons' style='padding: 10px 20px'>
+				<label>设备</label><input id='equipmentNo-confirm'
+					name='equipmentNo-confirm' class='easyui-textbox'><label>报修</label><input
+					id='malfunctionId-confirm' name='malfunctionId-confirm'
+					class='easyui-textbox'>
+				<div></div>
+				<br>
 				<table id='datagrid-maintenance' class='easyui-datagrid'
 					style='border-left: 0px; border-right: 0px;'
 					toolbar='#toolbar-maintenance' rownumbers='true'
 					singleSelect='true'></table>
 			</div>
-			<div id='dlg-buttons'>
+			<div id='dlg-maintenance-buttons'>
 				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
 					onclick='confirm()'>确认</a> <a href='#' class='easyui-linkbutton'
 					iconCls='icon-cancel' onclick='retract()'>撤回</a>
