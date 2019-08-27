@@ -123,6 +123,9 @@ body {
 					style='border-left: 0px; border-right: 0px;'
 					toolbar='#toolbar-maintenance' rownumbers='true'
 					singleSelect='true'></table>
+
+				<div id='' class='easyui-dialog' closed='true' buttons=''
+					style='padding: 10px 20px'></div>
 			</div>
 			<div id='dlg-maintenance-buttons'>
 				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'

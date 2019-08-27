@@ -47,6 +47,7 @@ public class SearchUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("SearchUserServlet");
 		String byName = request.getParameter("ByName");
 		System.out.println(byName);
 		IUserService service = new UserServiceImpl();

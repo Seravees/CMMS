@@ -48,6 +48,7 @@ public class ShowUserServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// System.out.println("flag");
+		System.out.println("ShowUserServlet");
 		IUserService service = new UserServiceImpl();
 		List<User> list = service.getUsers();
 

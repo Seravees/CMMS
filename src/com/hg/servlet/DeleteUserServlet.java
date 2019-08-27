@@ -44,7 +44,8 @@ public class DeleteUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(request.getParameter("accountID"));
+		System.out.println("DeleteUserServlet");
+		// System.out.println(request.getParameter("accountID"));
 		String accountID = request.getParameter("accountID");
 		IUserService service = new UserServiceImpl();
 		int rs = service.deleteUser(accountID);
@@ -54,7 +55,7 @@ public class DeleteUserServlet extends HttpServlet {
 			writer.write("success delete");
 			writer.close();
 		} else {
-			//System.out.println("fail");
+			// System.out.println("fail");
 			PrintWriter writer = response.getWriter();
 			writer.write("fail delete");
 			writer.close();

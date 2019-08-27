@@ -39,7 +39,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// System.out.println("logout");
+		System.out.println("LogoutServlet");
 		request.getSession().invalidate();
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 		// response.sendRedirect("/CMMS/index.jsp");

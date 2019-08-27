@@ -45,6 +45,7 @@ public class EditUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("EditUserServlet");
 		User user = new User();
 		user.setAccountID(request.getParameter("accountID"));
 		user.setPsd(request.getParameter("psd"));
