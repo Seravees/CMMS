@@ -22,7 +22,7 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 		try {
 			PreparedStatement pstmt = conn
 					.prepareStatement("select * from dbo.CMMS_MalfunctionRecords"
-							+ " order by CMMS_MalfunctionRecords.MalfunctionState");
+							+ " order by MalfunctionState");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MalfunctionRecords malfunctionRecords = new MalfunctionRecords();
@@ -86,6 +86,40 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 			e.printStackTrace();
 		}
 		return rs;
+	}
+
+	@Override
+	public List<MalfunctionRecords> findAllMalfunction(String malfunctionState) {
+		// TODO Auto-generated method stub
+		Connection conn = Dao.conn();
+		List<MalfunctionRecords> malfunctionList = new ArrayList<MalfunctionRecords>();
+
+		try {
+			PreparedStatement pstmt = conn
+					.prepareStatement("select * from dbo.CMMS_MalfunctionRecords"
+							+ " where MalfunctionState =?");
+			pstmt.setString(1, malfunctionState);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				MalfunctionRecords malfunctionRecords = new MalfunctionRecords();
+				malfunctionRecords.setEquipmentNo(rs.getString("EquipmentNO"));
+				malfunctionRecords.setMalfunctionId(rs
+						.getString("MalfunctionID"));
+				malfunctionRecords.setMalfunctionMan(rs
+						.getString("MalfunctionMan"));
+				malfunctionRecords.setMalfunctionRecords(rs
+						.getString("MalfunctionRecords"));
+				malfunctionRecords.setMalfunctionState(rs
+						.getString("MalfunctionState"));
+				malfunctionRecords.setMalfunctionTime(rs
+						.getString("MalfunctionTime"));
+				malfunctionList.add(malfunctionRecords);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return malfunctionList;
 	}
 
 }

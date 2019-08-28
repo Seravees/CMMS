@@ -54,17 +54,26 @@ public class MalfunctionListServlet extends HttpServlet {
 		String confirm = null;
 		confirm = request.getParameter("confirm");
 		String malfunctionId = request.getParameter("malfunctionId");
-		//System.out.println(confirm);
+		String equipmentRemark = null;
+		equipmentRemark = request.getParameter("equipmentRemark");
+		// System.out.println(confirm);
 		if (confirm != null) {
 			if (confirm.equals("1")) {
 				malfunctionService.editMalfunctionState(malfunctionId, "3");
 			} else if (confirm.equals("2")) {
-				System.out.println(malfunctionId);
+				// System.out.println(malfunctionId);
+				System.out.println(equipmentRemark);
 				malfunctionService.editMalfunctionState(malfunctionId, "1");
 			}
 		}
-
-		List<MalfunctionRecords> list = malfunctionService.getMalfunction();
+		String malfunctionState = null;
+		malfunctionState = request.getParameter("malfunctionState");
+		List<MalfunctionRecords> list;
+		if (malfunctionState != null) {
+			list = malfunctionService.getMalfunction(malfunctionState);
+		} else {
+			list = malfunctionService.getMalfunction();
+		}
 
 		Gson gson = new Gson();
 		String json = gson.toJson(list);

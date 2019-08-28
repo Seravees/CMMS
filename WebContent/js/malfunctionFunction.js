@@ -211,9 +211,32 @@ function confirm() {
 }
 
 function retract() {
+	$('#dlg-maintenance-retract').dialog('open').dialog('setTitle', '撤回确认');
+	$('#retract-equipmentRemark').textbox('clear');
+}
+
+function retract_confirm() {
 	url = 'malfunctionList?confirm=2&malfunctionId='
-			+ $('#malfunctionId-confirm').val();
+			+ $('#malfunctionId-confirm').val() + '&equipmentRemark='
+			+ $('#retract-equipmentRemark').val();
 	$('#datagrid').datagrid('options').url = url;
 	$('#datagrid').datagrid('load');
+	$('#dlg-maintenance-retract').dialog('close');
 	$('#dlg-maintenance').dialog('close');
+}
+
+function doPost(obj) {
+	var url;
+	if (obj == '待维修') {
+		// $('#confirm-malfunction-button').linkbutton('disable');
+		url = 'malfunctionList?malfunctionState=1';
+	} else if (obj == '已维修') {
+		$('#confirm-malfunction-button').linkbutton('enable');
+		url = 'malfunctionList?malfunctionState=2';
+	} else if (obj == '已确认') {
+		$('#confirm-malfunction-button').linkbutton('disable');
+		url = 'malfunctionList?malfunctionState=3';
+	}
+	$('#datagrid').datagrid('options').url = url;
+	$('#datagrid').datagrid('load');
 }

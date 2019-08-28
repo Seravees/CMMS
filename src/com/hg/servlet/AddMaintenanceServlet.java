@@ -62,8 +62,9 @@ public class AddMaintenanceServlet extends HttpServlet {
 		mr.setmEndtime(request.getParameter("mEndtime"));
 		mr.setmManName((String) session.getAttribute("name"));
 		mr.setmState("");
-		mr.setmRemark(new String(request.getParameter("mRemark").getBytes(
-				"ISO8859_1"), "UTF-8"));
+		
+		// mr.setmRemark(new String(request.getParameter("mRemark").getBytes(
+		// "ISO8859_1"), "UTF-8"));
 
 		System.out.println(mr.toString());
 

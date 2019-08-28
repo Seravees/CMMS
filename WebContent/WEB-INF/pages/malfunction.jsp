@@ -35,15 +35,10 @@ body {
 		</div>
 
 		<div data-options="region:'west',split:true,collapsible:false"
-			title="" style="width: 300px;">
+			title='' style="width: 300px;">
 			<div class="easyui-sidemenu"
 				data-options="data:datalist,onSelect:function(obj){		
-				if(obj.text=='用户管理'){
-					post('user');
-				}else if(obj.text=='设备管理'){
-					post('user');		
-				}
-				
+				doPost(obj.text);	
 			}"
 				style="width: 293px;"></div>
 		</div>
@@ -58,9 +53,11 @@ body {
 			<div id='toolbar'>
 				<a href='#' class='easyui-linkbutton' iconCls='icon-add'
 					plain='true' onclick='newMalfunction()'>新增报修</a> <a href='#'
-					class='easyui-linkbutton' iconCls='icon-edit' plain='true'
+					id='confirm-malfunction-button' class='easyui-linkbutton'
+					iconCls='icon-edit' plain='true' disabled='true'
 					onclick='confirmMalfunction()'>维修确认</a><a href='#'
-					class='easyui-linkbutton' iconCls='icon-remove' plain='true'
+					id='remove-malfunction-button' class='easyui-linkbutton'
+					iconCls='icon-remove' plain='true' disabled='true'
 					onclick='removeMalfunction()'>撤销报修</a>
 			</div>
 
@@ -124,8 +121,18 @@ body {
 					toolbar='#toolbar-maintenance' rownumbers='true'
 					singleSelect='true'></table>
 
-				<div id='' class='easyui-dialog' closed='true' buttons=''
-					style='padding: 10px 20px'></div>
+				<div id='dlg-maintenance-retract' class='easyui-dialog'
+					closed='true' buttons='#dlg-maintenance-retract-buttons'
+					style='padding: 10px 20px'>
+					<label>备注</label><input id='retract-equipmentRemark'
+						name='retract-equipmentRemark' class='easyui-textbox'
+						data-options='multiline:true' required='true'
+						style='width: 300px; height: 50px'>
+				</div>
+				<div id='dlg-maintenance-retract-buttons'>
+					<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
+						onclick='retract_confirm()'>确认</a>
+				</div>
 			</div>
 			<div id='dlg-maintenance-buttons'>
 				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
@@ -147,19 +154,6 @@ body {
 				text : '已确认'
 			} ]
 		} ]
-
-		function post(o) {
-			var f = document.createElement("form");
-			f.action = o;
-			f.method = "post";
-			var hdnFilePath = document.createElement('input');
-			hdnFilePath.type = "hidden";
-			hdnFilePath.name = "user";
-			hdnFilePath.value = "user";
-			f.appendChild(hdnFilePath);
-			document.body.appendChild(f);
-			f.submit();
-		}
 	</script>
 	<script type="text/javascript" src="js/malfunctionFunction.js"></script>
 </body>

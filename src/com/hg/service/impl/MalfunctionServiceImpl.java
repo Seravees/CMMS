@@ -26,7 +26,14 @@ public class MalfunctionServiceImpl implements IMalfunctionService {
 	public int editMalfunctionState(String malfunctionId,
 			String malfunctionState) {
 		// TODO Auto-generated method stub
-		return malfunctionDao.editMalfunctionState(malfunctionId, malfunctionState);
+		return malfunctionDao.editMalfunctionState(malfunctionId,
+				malfunctionState);
+	}
+
+	@Override
+	public List<MalfunctionRecords> getMalfunction(String malfunctionState) {
+		// TODO Auto-generated method stub
+		return malfunctionDao.findAllMalfunction(malfunctionState);
 	}
 
 }
