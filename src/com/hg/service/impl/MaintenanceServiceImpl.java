@@ -23,4 +23,10 @@ public class MaintenanceServiceImpl implements IMaintenanceService {
 		// TODO Auto-generated method stub
 		return maintenanceDao.addMaintenanceRecords(mr);
 	}
+
+	@Override
+	public int updateMremarkbyMrecordsId(String mRemark) {
+		// TODO Auto-generated method stub
+		return maintenanceDao.updateMremarkbyMrecordsId(mRemark);
+	}
 }

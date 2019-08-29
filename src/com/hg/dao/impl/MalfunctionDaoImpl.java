@@ -22,7 +22,7 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 		try {
 			PreparedStatement pstmt = conn
 					.prepareStatement("select * from dbo.CMMS_MalfunctionRecords"
-							+ " order by MalfunctionState");
+							+ " order by MalfunctionState,MalfunctionID desc");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MalfunctionRecords malfunctionRecords = new MalfunctionRecords();
@@ -97,7 +97,7 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 		try {
 			PreparedStatement pstmt = conn
 					.prepareStatement("select * from dbo.CMMS_MalfunctionRecords"
-							+ " where MalfunctionState =?");
+							+ " where MalfunctionState =? order by MalfunctionID desc");
 			pstmt.setString(1, malfunctionState);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {

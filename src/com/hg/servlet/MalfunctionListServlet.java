@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.hg.domain.MalfunctionRecords;
+import com.hg.service.IMaintenanceService;
 import com.hg.service.IMalfunctionService;
+import com.hg.service.impl.MaintenanceServiceImpl;
 import com.hg.service.impl.MalfunctionServiceImpl;
 
 /**
@@ -50,6 +52,7 @@ public class MalfunctionListServlet extends HttpServlet {
 		System.out.println("MalfunctionListServlet");
 
 		IMalfunctionService malfunctionService = new MalfunctionServiceImpl();
+		IMaintenanceService maintenanceService = new MaintenanceServiceImpl();
 
 		String confirm = null;
 		confirm = request.getParameter("confirm");
@@ -62,7 +65,8 @@ public class MalfunctionListServlet extends HttpServlet {
 				malfunctionService.editMalfunctionState(malfunctionId, "3");
 			} else if (confirm.equals("2")) {
 				// System.out.println(malfunctionId);
-				System.out.println(equipmentRemark);
+				// System.out.println(equipmentRemark);
+				maintenanceService.updateMremarkbyMrecordsId(equipmentRemark);
 				malfunctionService.editMalfunctionState(malfunctionId, "1");
 			}
 		}

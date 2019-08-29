@@ -54,9 +54,8 @@ body {
 				<a href='#' class='easyui-linkbutton' iconCls='icon-add'
 					plain='true' onclick='newMalfunction()'>新增报修</a> <a href='#'
 					id='confirm-malfunction-button' class='easyui-linkbutton'
-					iconCls='icon-edit' plain='true' disabled='true'
-					onclick='confirmMalfunction()'>维修确认</a><a href='#'
-					id='remove-malfunction-button' class='easyui-linkbutton'
+					iconCls='icon-edit' plain='true' onclick='confirmMalfunction()'>维修确认</a><a
+					href='#' id='remove-malfunction-button' class='easyui-linkbutton'
 					iconCls='icon-remove' plain='true' disabled='true'
 					onclick='removeMalfunction()'>撤销报修</a>
 			</div>

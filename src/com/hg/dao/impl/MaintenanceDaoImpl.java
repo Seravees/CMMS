@@ -24,7 +24,7 @@ public class MaintenanceDaoImpl implements IMaintenanceDao {
 		try {
 			PreparedStatement pstmt = conn
 					.prepareStatement("select * from dbo.CMMS_MaintenanceRecords "
-							+ "where MalfunctionID = ?");
+							+ "where MalfunctionID = ? order by MRecords_ID desc");
 			pstmt.setString(1, malr.getMalfunctionId());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -66,6 +66,26 @@ public class MaintenanceDaoImpl implements IMaintenanceDao {
 			pstmt.setString(7, mr.getmState());
 			pstmt.setString(8, mr.getmRemark());
 
+			rs = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+	@Override
+	public int updateMremarkbyMrecordsId(String mRemark) {
+		// TODO Auto-generated method stub
+		int rs = 0;
+		Connection conn = Dao.conn();
+
+		try {
+			PreparedStatement pstmt = conn
+					.prepareStatement("update dbo.CMMS_MaintenanceRecords "
+							+ "set MRemark = ? where MRecords_ID = "
+							+ "(select top 1 MRecords_ID from dbo.CMMS_MaintenanceRecords order by MRecords_ID desc )");
+			pstmt.setString(1, mRemark);
 			rs = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

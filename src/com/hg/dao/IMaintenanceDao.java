@@ -10,6 +10,6 @@ public interface IMaintenanceDao {
 			MalfunctionRecords malr);
 
 	int addMaintenanceRecords(MaintenanceRecords mr);
-	
 
+	int updateMremarkbyMrecordsId(String mRemark);
 }

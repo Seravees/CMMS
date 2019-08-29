@@ -189,6 +189,11 @@ function malfunctionConfirm() {
 function confirmMalfunction() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
+		if (row.malfunctionState == 2) {
+			$('#dlg-maintenance-buttons').show();
+		} else {
+			$('#dlg-maintenance-buttons').hide();
+		}
 		$('#dlg-maintenance').dialog('open').dialog('setTitle', '维修确认');
 		$('#equipmentNo-confirm').textbox({
 			value : row.equipmentNo
@@ -199,11 +204,12 @@ function confirmMalfunction() {
 		url = 'maintenanceList?malfunctionId=' + row.malfunctionId;
 		$('#datagrid-maintenance').datagrid('options').url = url;
 		$('#datagrid-maintenance').datagrid('load');
+
 	}
 }
 
 function confirm() {
-	url = 'malfunctionList?confirm=1&malfunctionId='
+	url = 'malfunctionList?confirm=1&malfunctionState=2&malfunctionId='
 			+ $('#malfunctionId-confirm').val();
 	$('#datagrid').datagrid('options').url = url;
 	$('#datagrid').datagrid('load');
@@ -216,7 +222,7 @@ function retract() {
 }
 
 function retract_confirm() {
-	url = 'malfunctionList?confirm=2&malfunctionId='
+	url = 'malfunctionList?confirm=2&malfunctionState=2&malfunctionId='
 			+ $('#malfunctionId-confirm').val() + '&equipmentRemark='
 			+ $('#retract-equipmentRemark').val();
 	$('#datagrid').datagrid('options').url = url;
@@ -228,13 +234,13 @@ function retract_confirm() {
 function doPost(obj) {
 	var url;
 	if (obj == '待维修') {
-		// $('#confirm-malfunction-button').linkbutton('disable');
+		$('#remove-malfunction-button').linkbutton('enable');
 		url = 'malfunctionList?malfunctionState=1';
 	} else if (obj == '已维修') {
-		$('#confirm-malfunction-button').linkbutton('enable');
+		$('#remove-malfunction-button').linkbutton('disable');
 		url = 'malfunctionList?malfunctionState=2';
 	} else if (obj == '已确认') {
-		$('#confirm-malfunction-button').linkbutton('disable');
+		$('#remove-malfunction-button').linkbutton('disable');
 		url = 'malfunctionList?malfunctionState=3';
 	}
 	$('#datagrid').datagrid('options').url = url;

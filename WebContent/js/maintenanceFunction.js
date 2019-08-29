@@ -87,6 +87,11 @@ function pagerFilter(data) {
 function detail() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
+		if (row.malfunctionState == 1) {
+			$('#toolbar-maintenance').show();
+		} else {
+			$('#toolbar-maintenance').hide();
+		}
 		$('#dlg-maintenance').dialog('open').dialog('setTitle', '维修记录');
 		$('#equipmentNo').textbox({
 			value : row.equipmentNo
@@ -149,4 +154,20 @@ function saveMaintenance() {
 
 function closeDlg() {
 	$('#dlg-maintenanceAdd').dialog('close');
+}
+
+function doPost(obj) {
+	var url;
+	if (obj == '待维修') {
+		$('#remove-malfunction-button').linkbutton('enable');
+		url = 'malfunctionList?malfunctionState=1';
+	} else if (obj == '已维修') {
+		$('#remove-malfunction-button').linkbutton('disable');
+		url = 'malfunctionList?malfunctionState=2';
+	} else if (obj == '已确认') {
+		$('#remove-malfunction-button').linkbutton('disable');
+		url = 'malfunctionList?malfunctionState=3';
+	}
+	$('#datagrid').datagrid('options').url = url;
+	$('#datagrid').datagrid('load');
 }

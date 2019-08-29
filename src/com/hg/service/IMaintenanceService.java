@@ -10,4 +10,6 @@ public interface IMaintenanceService {
 			MalfunctionRecords malr);
 
 	int addMaintenanceRecords(MaintenanceRecords mr);
+	
+	int updateMremarkbyMrecordsId(String mRemark);
 }

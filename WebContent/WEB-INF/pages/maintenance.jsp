@@ -38,12 +38,7 @@ body {
 			title="" style="width: 300px;">
 			<div class="easyui-sidemenu"
 				data-options="data:datalist,onSelect:function(obj){		
-				if(obj.text=='用户管理'){
-					post('user');
-				}else if(obj.text=='设备管理'){
-					post('user');		
-				}
-				
+				doPost(obj.text);				
 			}"
 				style="width: 293px;"></div>
 		</div>
@@ -57,7 +52,7 @@ body {
 			</table>
 			<div id='toolbar'>
 				<a href='#' class='easyui-linkbutton' iconCls='icon-search'
-					plain='true' onclick='detail()'></a>
+					plain='true' onclick='detail()'>维修记录查看</a>
 			</div>
 
 			<div id='dlg-maintenance' class='easyui-dialog'
@@ -74,7 +69,7 @@ body {
 				</table>
 				<div id='toolbar-maintenance'>
 					<a href='#' class='easyui-linkbutton' iconCls='icon-add'
-						plain='true' onclick='maintenanceAdd()'></a>
+						plain='true' onclick='maintenanceAdd()'>添加维修记录</a>
 				</div>
 			</div>
 
@@ -108,7 +103,7 @@ body {
 			</div>
 			<div id='dlg-buttons'>
 				<a href='#' class='easyui-linkbutton' iconCls='icon-ok'
-					onclick='saveMaintenance()'>save</a> <a href='#'
+					onclick='saveMaintenance()'>确认</a> <a href='#'
 					class='easyui-linkbutton' iconCls='icon-cancel'
 					onclick='closeDlg()'>取消</a>
 			</div>
@@ -128,18 +123,7 @@ body {
 			} ]
 		} ]
 
-		function post(o) {
-			var f = document.createElement("form");
-			f.action = o;
-			f.method = "post";
-			var hdnFilePath = document.createElement('input');
-			hdnFilePath.type = "hidden";
-			hdnFilePath.name = "user";
-			hdnFilePath.value = "user";
-			f.appendChild(hdnFilePath);
-			document.body.appendChild(f);
-			f.submit();
-		}
+		
 	</script>
 	<script type="text/javascript" src="js/maintenanceFunction.js"></script>
 </body>
