@@ -15,6 +15,7 @@ import com.hg.service.impl.UserServiceImpl;
 
 /**
  * Servlet implementation class EditUserServlet
+ * 用户修改
  */
 @WebServlet("/EditUserServlet")
 public class EditUserServlet extends HttpServlet {

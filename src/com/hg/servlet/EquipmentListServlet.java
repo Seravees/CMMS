@@ -17,6 +17,7 @@ import com.hg.service.impl.EquipmentServiceImpl;
 
 /**
  * Servlet implementation class EquipmentServlet
+ * 设备列表展示
  */
 @WebServlet("/EquipmentServlet")
 public class EquipmentListServlet extends HttpServlet {

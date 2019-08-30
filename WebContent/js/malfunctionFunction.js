@@ -1,3 +1,4 @@
+/*报修记录表格式*/
 $('#datagrid').datagrid({
 	columns : [ [ {
 		field : 'malfunctionTime',
@@ -26,6 +27,7 @@ $('#datagrid').datagrid({
 	loadFilter : pagerFilter
 });
 
+/*设备表格式*/
 $('#datagrid-equipment').datagrid({
 	columns : [ [ {
 		field : 'equipmentNo',
@@ -66,6 +68,7 @@ $('#datagrid-equipment').datagrid({
 	loadFilter : pagerFilter
 });
 
+/*维修记录表格式*/
 $('#datagrid-maintenance').datagrid({
 	columns : [ [ {
 		field : 'mStarttime',
@@ -94,6 +97,7 @@ $('#datagrid-maintenance').datagrid({
 	loadFilter : pagerFilter
 });
 
+/*分页显示*/
 function pagerFilter(data) {
 	if (typeof data.length == 'number' && typeof data.splice == 'function') {
 		data = {
@@ -124,18 +128,21 @@ function pagerFilter(data) {
 	return data;
 }
 
+/*新增报修记录*/
 function newMalfunction() {
 	$('#dlg-add').dialog('open').dialog('setTitle', '新增报修记录');
 	$('#fm-add').form('clear');
 	// url = '';
 }
 
+/*设备查询*/
 function doEquipmentSearch() {
 	$('#datagrid-equipment').datagrid('options').url = 'equipment';
 	$('#datagrid-equipment').datagrid('load');
 	$('#dlg-equipment').dialog('open').dialog('setTitle', '设备选择');
 }
 
+/*设备查询确认*/
 function equipmentConfirm() {
 	var row = $('#datagrid-equipment').datagrid('getSelected');
 	if (row) {
@@ -152,6 +159,7 @@ function equipmentConfirm() {
 	}
 }
 
+/*新增报修记录确认*/
 function malfunctionConfirm() {
 	$('#fm-add').form('submit', {
 		url : 'malfunctionAdd',
@@ -186,6 +194,7 @@ function malfunctionConfirm() {
 	});
 }
 
+/*查看维修记录*/
 function confirmMalfunction() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
@@ -208,6 +217,7 @@ function confirmMalfunction() {
 	}
 }
 
+/*维修确认*/
 function confirm() {
 	url = 'malfunctionList?confirm=1&malfunctionState=2&malfunctionId='
 			+ $('#malfunctionId-confirm').val();
@@ -216,11 +226,13 @@ function confirm() {
 	$('#dlg-maintenance').dialog('close');
 }
 
+/*维修撤回*/
 function retract() {
 	$('#dlg-maintenance-retract').dialog('open').dialog('setTitle', '撤回确认');
 	$('#retract-equipmentRemark').textbox('clear');
 }
 
+/*维修撤回确认*/
 function retract_confirm() {
 	url = 'malfunctionList?confirm=2&malfunctionState=2&malfunctionId='
 			+ $('#malfunctionId-confirm').val() + '&equipmentRemark='
@@ -231,6 +243,7 @@ function retract_confirm() {
 	$('#dlg-maintenance').dialog('close');
 }
 
+/*左边栏分类显示*/
 function doPost(obj) {
 	var url;
 	if (obj == '待维修') {

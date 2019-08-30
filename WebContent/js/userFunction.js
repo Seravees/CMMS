@@ -1,3 +1,4 @@
+/*用户表格式*/
 $('#datagrid').datagrid({
 	columns : [ [ {
 		field : 'accountID',	
@@ -22,6 +23,7 @@ $('#datagrid').datagrid({
 	loadFilter : pagerFilter
 });
 
+/*分页显示*/
 function pagerFilter(data) {
 	if (typeof data.length == 'number' && typeof data.splice == 'function') {
 		data = {
@@ -52,6 +54,7 @@ function pagerFilter(data) {
 	return data;
 }
 
+/*新增用户*/
 function newUser() {
 	$('#dlg').dialog('open').dialog('setTitle', '添加用户');
 	$('#fm').form('clear');
@@ -61,6 +64,7 @@ function newUser() {
 	url = 'UserSave';
 }
 
+/*新增、修改用户确认*/
 function saveUser() {
 	$('#fm').form('submit', {
 		url : url,
@@ -95,6 +99,7 @@ function saveUser() {
 	});
 }
 
+/*修改用户*/
 function editUser() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
@@ -107,6 +112,7 @@ function editUser() {
 	}
 }
 
+/*删除用户*/
 function removeUser() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
@@ -133,6 +139,7 @@ function removeUser() {
 	}
 }
 
+/*用户查询*/
 function doSearch() {
 	var $userName = $('#searchByName');
 	var ByName = $userName.val();

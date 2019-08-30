@@ -1,3 +1,4 @@
+/*报修记录表格式*/
 $('#datagrid').datagrid({
 	columns : [ [ {
 		field : 'malfunctionTime',
@@ -26,6 +27,7 @@ $('#datagrid').datagrid({
 	loadFilter : pagerFilter
 });
 
+/*维修记录表格式*/
 $('#datagrid-maintenance').datagrid({
 	columns : [ [ {
 		field : 'mStarttime',
@@ -54,6 +56,7 @@ $('#datagrid-maintenance').datagrid({
 	loadFilter : pagerFilter
 });
 
+/*分页显示*/
 function pagerFilter(data) {
 	if (typeof data.length == 'number' && typeof data.splice == 'function') {
 		data = {
@@ -84,6 +87,7 @@ function pagerFilter(data) {
 	return data;
 }
 
+/*维修记录详情查看*/
 function detail() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
@@ -106,6 +110,7 @@ function detail() {
 	}
 }
 
+/*维修记录添加*/
 function maintenanceAdd() {
 	$('#dlg-maintenanceAdd').dialog('open').dialog('setTitle', '维修记录添加');
 	$('#fm').form('clear');
@@ -117,11 +122,12 @@ function maintenanceAdd() {
 	});
 }
 
+/*维修记录添加确认*/
 function saveMaintenance() {
 	$('#fm').form('submit', {
 		url : 'maintenanceAdd',
 		onSubmit : function() {
-			// return $(this).form('validate');
+			return $(this).form('validate');
 			// alert('a')
 		},
 		success : function(res) {
@@ -156,6 +162,7 @@ function closeDlg() {
 	$('#dlg-maintenanceAdd').dialog('close');
 }
 
+/*左边栏分类显示*/
 function doPost(obj) {
 	var url;
 	if (obj == '待维修') {

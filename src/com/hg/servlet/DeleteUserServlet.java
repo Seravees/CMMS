@@ -14,6 +14,7 @@ import com.hg.service.impl.UserServiceImpl;
 
 /**
  * Servlet implementation class DeleteUserServlet
+ * 用户删除
  */
 @WebServlet("/DeleteUserServlet")
 public class DeleteUserServlet extends HttpServlet {

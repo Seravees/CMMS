@@ -25,8 +25,8 @@ public class MaintenanceServiceImpl implements IMaintenanceService {
 	}
 
 	@Override
-	public int updateMremarkbyMrecordsId(String mRemark) {
+	public int updateMremarkbyMrecordsId(String mRemark, String malfunctionId) {
 		// TODO Auto-generated method stub
-		return maintenanceDao.updateMremarkbyMrecordsId(mRemark);
+		return maintenanceDao.updateMremarkbyMrecordsId(mRemark, malfunctionId);
 	}
 }

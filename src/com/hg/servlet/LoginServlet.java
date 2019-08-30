@@ -15,6 +15,7 @@ import com.hg.service.impl.UserServiceImpl;
 
 /**
  * Servlet implementation class LoginServlet
+ * 用户登录
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {

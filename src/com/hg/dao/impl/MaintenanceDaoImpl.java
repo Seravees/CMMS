@@ -14,6 +14,7 @@ import com.hg.util.Dao;
 
 public class MaintenanceDaoImpl implements IMaintenanceDao {
 
+	/***** 根据报修记录ID查询所有维修记录，递减排序 *****/
 	@Override
 	public List<MaintenanceRecords> getMaintenanceRecordsByMalfunctionRecords(
 			MalfunctionRecords malr) {
@@ -47,6 +48,7 @@ public class MaintenanceDaoImpl implements IMaintenanceDao {
 		return list;
 	}
 
+	/***** 维修记录添加 *****/
 	@Override
 	public int addMaintenanceRecords(MaintenanceRecords mr) {
 		// TODO Auto-generated method stub
@@ -74,8 +76,9 @@ public class MaintenanceDaoImpl implements IMaintenanceDao {
 		return rs;
 	}
 
+	/***** 最新的维修记录备注修改 *****/
 	@Override
-	public int updateMremarkbyMrecordsId(String mRemark) {
+	public int updateMremarkbyMrecordsId(String mRemark, String malfunctionId) {
 		// TODO Auto-generated method stub
 		int rs = 0;
 		Connection conn = Dao.conn();
@@ -84,8 +87,9 @@ public class MaintenanceDaoImpl implements IMaintenanceDao {
 			PreparedStatement pstmt = conn
 					.prepareStatement("update dbo.CMMS_MaintenanceRecords "
 							+ "set MRemark = ? where MRecords_ID = "
-							+ "(select top 1 MRecords_ID from dbo.CMMS_MaintenanceRecords order by MRecords_ID desc )");
+							+ "(select top 1 MRecords_ID from dbo.CMMS_MaintenanceRecords where MalfunctionID = ? order by MRecords_ID desc )");
 			pstmt.setString(1, mRemark);
+			pstmt.setString(2, malfunctionId);
 			rs = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

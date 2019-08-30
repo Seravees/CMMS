@@ -19,6 +19,7 @@ import com.hg.service.impl.MalfunctionServiceImpl;
 
 /**
  * Servlet implementation class MalfunctionListServlet
+ * 报修记录列表展示
  */
 @WebServlet("/MalfunctionListServlet")
 public class MalfunctionListServlet extends HttpServlet {
@@ -66,7 +67,7 @@ public class MalfunctionListServlet extends HttpServlet {
 			} else if (confirm.equals("2")) {
 				// System.out.println(malfunctionId);
 				// System.out.println(equipmentRemark);
-				maintenanceService.updateMremarkbyMrecordsId(equipmentRemark);
+				maintenanceService.updateMremarkbyMrecordsId(equipmentRemark,malfunctionId);
 				malfunctionService.editMalfunctionState(malfunctionId, "1");
 			}
 		}

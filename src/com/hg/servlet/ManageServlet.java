@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ManageServlet
+ * 根据用户权限跳转
  */
 @WebServlet("/ManageServlet")
 public class ManageServlet extends HttpServlet {

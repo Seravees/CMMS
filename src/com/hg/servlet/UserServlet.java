@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UserServlet
+ * 用户表html输出
  */
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {

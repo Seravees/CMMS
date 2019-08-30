@@ -44,7 +44,7 @@ public class UserDaoImpl implements IUserDao {
 		return user;
 	}
 
-	/***** 所有用戶查詢 *****/
+	/***** 所有用戶查询（除管理员） *****/
 	@Override
 	public List<User> findAllUser() {
 		// TODO Auto-generated method stub
@@ -110,6 +110,7 @@ public class UserDaoImpl implements IUserDao {
 		return userList;
 	}
 
+	/***** 用户添加 *****/
 	@Override
 	public int addUser(User user) {
 		// TODO Auto-generated method stub
@@ -131,6 +132,7 @@ public class UserDaoImpl implements IUserDao {
 		return 0;
 	}
 
+	/***** 用户修改 *****/
 	@Override
 	public int editUser(String accountID, User user) {
 		// TODO Auto-generated method stub
@@ -154,6 +156,7 @@ public class UserDaoImpl implements IUserDao {
 		return 0;
 	}
 
+	/***** 用户删除 *****/
 	@Override
 	public int deleteUser(String accountID) {
 		// TODO Auto-generated method stub

@@ -17,6 +17,7 @@ import com.hg.service.impl.UserServiceImpl;
 
 /**
  * Servlet implementation class searchUserServlet
+ * 用户查询
  */
 @WebServlet("/searchUserServlet")
 public class SearchUserServlet extends HttpServlet {

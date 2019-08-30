@@ -17,6 +17,7 @@ import com.hg.service.impl.UserServiceImpl;
 
 /**
  * Servlet implementation class ShowUserServlet
+ * 用户列表展示
  */
 @WebServlet("/ShowUserServlet")
 public class ShowUserServlet extends HttpServlet {

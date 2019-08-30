@@ -11,5 +11,5 @@ public interface IMaintenanceDao {
 
 	int addMaintenanceRecords(MaintenanceRecords mr);
 
-	int updateMremarkbyMrecordsId(String mRemark);
+	int updateMremarkbyMrecordsId(String mRemark,String malfunctionId);
 }

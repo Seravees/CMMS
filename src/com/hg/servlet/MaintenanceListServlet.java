@@ -18,6 +18,7 @@ import com.hg.service.impl.MaintenanceServiceImpl;
 
 /**
  * Servlet implementation class MaintenanceListServlet
+ * 维修记录列表展示
  */
 @WebServlet("/MaintenanceListServlet")
 public class MaintenanceListServlet extends HttpServlet {

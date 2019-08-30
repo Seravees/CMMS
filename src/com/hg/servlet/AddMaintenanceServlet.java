@@ -17,6 +17,7 @@ import com.hg.service.impl.MalfunctionServiceImpl;
 
 /**
  * Servlet implementation class AddMaintenanceServlet
+ * 维修记录添加
  */
 @WebServlet("/AddMaintenanceServlet")
 public class AddMaintenanceServlet extends HttpServlet {

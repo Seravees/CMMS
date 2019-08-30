@@ -13,6 +13,7 @@ import com.hg.util.Dao;
 
 public class EquipmentDaoImpl implements IEquipmentDao {
 
+	/***** 查询所有设备 *****/
 	@Override
 	public List<Equipment> findAllEquipment() {
 		// TODO Auto-generated method stub

@@ -15,6 +15,7 @@ import com.hg.service.impl.UserServiceImpl;
 
 /**
  * Servlet implementation class AddUserServlet
+ * 用户添加
  */
 @WebServlet("/AddUserServlet")
 public class AddUserServlet extends HttpServlet {
