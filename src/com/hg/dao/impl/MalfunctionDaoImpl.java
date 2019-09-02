@@ -13,6 +13,7 @@ import com.hg.util.Dao;
 
 public class MalfunctionDaoImpl implements IMalfunctionDao {
 
+	/***** 查询所有报修记录 *****/
 	@Override
 	public List<MalfunctionRecords> findAllMalfunction() {
 		// TODO Auto-generated method stub
@@ -21,8 +22,10 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 
 		try {
 			PreparedStatement pstmt = conn
-					.prepareStatement("select * from dbo.CMMS_MalfunctionRecords"
-							+ " order by MalfunctionState,MalfunctionID desc");
+					.prepareStatement("select * from dbo.CMMS_MalfunctionRecords "
+							+ "left join CMMS_MalfunctionState on "
+							+ "CMMS_MalfunctionRecords.MalfunctionState=CMMS_MalfunctionState.MalfunctionState"
+							+ " order by CMMS_MalfunctionRecords.MalfunctionState,MalfunctionID desc");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				MalfunctionRecords malfunctionRecords = new MalfunctionRecords();
@@ -35,6 +38,8 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 						.getString("MalfunctionRecords"));
 				malfunctionRecords.setMalfunctionState(rs
 						.getString("MalfunctionState"));
+				malfunctionRecords.setMalfunctionStateName(rs
+						.getString("MalfunctionStateName"));
 				malfunctionRecords.setMalfunctionTime(rs
 						.getString("MalfunctionTime"));
 				malfunctionList.add(malfunctionRecords);
@@ -46,6 +51,7 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 		return malfunctionList;
 	}
 
+	/***** 新增报修记录 *****/
 	@Override
 	public int addMalfunction(MalfunctionRecords mr) {
 		// TODO Auto-generated method stub
@@ -68,6 +74,7 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 		return rs;
 	}
 
+	/***** 报修记录状态编辑 *****/
 	@Override
 	public int editMalfunctionState(String malfunctionId,
 			String malfunctionState) {
@@ -88,6 +95,7 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 		return rs;
 	}
 
+	/***** 根据报修记录状态查询报修记录 *****/
 	@Override
 	public List<MalfunctionRecords> findAllMalfunction(String malfunctionState) {
 		// TODO Auto-generated method stub
@@ -96,8 +104,10 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 
 		try {
 			PreparedStatement pstmt = conn
-					.prepareStatement("select * from dbo.CMMS_MalfunctionRecords"
-							+ " where MalfunctionState =? order by MalfunctionID desc");
+					.prepareStatement("select * from dbo.CMMS_MalfunctionRecords "
+							+ "left join CMMS_MalfunctionState on "
+							+ "CMMS_MalfunctionRecords.MalfunctionState=CMMS_MalfunctionState.MalfunctionState"
+							+ " where CMMS_MalfunctionRecords.MalfunctionState =? order by MalfunctionID desc");
 			pstmt.setString(1, malfunctionState);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -111,6 +121,8 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 						.getString("MalfunctionRecords"));
 				malfunctionRecords.setMalfunctionState(rs
 						.getString("MalfunctionState"));
+				malfunctionRecords.setMalfunctionStateName(rs
+						.getString("MalfunctionStateName"));
 				malfunctionRecords.setMalfunctionTime(rs
 						.getString("MalfunctionTime"));
 				malfunctionList.add(malfunctionRecords);
@@ -120,6 +132,25 @@ public class MalfunctionDaoImpl implements IMalfunctionDao {
 			e.printStackTrace();
 		}
 		return malfunctionList;
+	}
+
+	/***** 报修记录删除 *****/
+	@Override
+	public int deleteMalfunction(String malfunctionId) {
+		// TODO Auto-generated method stub
+		Connection conn = Dao.conn();
+		int rs = 0;
+		try {
+			PreparedStatement pstmt = conn
+					.prepareStatement("delete from dbo.CMMS_MalfunctionRecords"
+							+ " where MalfunctionID=?");
+			pstmt.setString(1, malfunctionId);
+			rs = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 }

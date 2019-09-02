@@ -17,7 +17,7 @@ $('#datagrid').datagrid({
 		title : '报修人',
 		fixed : true
 	}, {
-		field : 'malfunctionState',
+		field : 'malfunctionStateName',
 		title : '状态',
 		fixed : true
 	} ] ],

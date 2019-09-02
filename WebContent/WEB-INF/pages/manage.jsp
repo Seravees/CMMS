@@ -53,7 +53,7 @@ body {
 
 		<div data-options="region:'center'" title=""
 			style="border-left: 0px; border-right: 0px;">
-			<%=request.getAttribute("test")%>
+			<%=request.getAttribute("datagridHtml")%>
 		</div>
 	</div>
 

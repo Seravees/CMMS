@@ -55,7 +55,7 @@ public class ManageServlet extends HttpServlet {
 			return;
 		}
 
-		request.setAttribute("test", "");
+		request.setAttribute("datagridHtml", "");
 		request.getRequestDispatcher((String) session.getAttribute("url"))
 				.forward(request, response);
 	}

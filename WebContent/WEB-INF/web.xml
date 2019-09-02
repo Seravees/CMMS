@@ -101,6 +101,14 @@
 		<url-pattern>/malfunctionAdd</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>malfunctionDeleteServlet</servlet-name>
+		<servlet-class>com.hg.servlet.DeleteMalfunctionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>malfunctionDeleteServlet</servlet-name>
+		<url-pattern>/malfunctionDelete</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>equipmentListServlet</servlet-name>
 		<servlet-class>com.hg.servlet.EquipmentListServlet</servlet-class>
 	</servlet>
@@ -124,7 +132,6 @@
 		<servlet-name>maintenanceAddServlet</servlet-name>
 		<url-pattern>/maintenanceAdd</url-pattern>
 	</servlet-mapping>
-
 	<filter>
 		<filter-name>noCacheFilter</filter-name>
 		<filter-class>com.hg.filter.NoCacheFilter</filter-class>

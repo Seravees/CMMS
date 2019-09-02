@@ -7,6 +7,7 @@ public class MalfunctionRecords {
 	String malfunctionTime;
 	String malfunctionRecords;
 	String malfunctionState;
+	String malfunctionStateName;
 
 	public String getMalfunctionId() {
 		return malfunctionId;
@@ -56,13 +57,22 @@ public class MalfunctionRecords {
 		this.malfunctionState = malfunctionState;
 	}
 
+	public String getMalfunctionStateName() {
+		return malfunctionStateName;
+	}
+
+	public void setMalfunctionStateName(String malfunctionStateName) {
+		this.malfunctionStateName = malfunctionStateName;
+	}
+
 	@Override
 	public String toString() {
 		return "MalfunctionRecords [malfunctionId=" + malfunctionId
 				+ ", equipmentNo=" + equipmentNo + ", malfunctionMan="
 				+ malfunctionMan + ", malfunctionTime=" + malfunctionTime
 				+ ", malfunctionRecords=" + malfunctionRecords
-				+ ", malfunctionState=" + malfunctionState + "]";
+				+ ", malfunctionState=" + malfunctionState
+				+ ", malfunctionStateName=" + malfunctionStateName + "]";
 	}
 
 }

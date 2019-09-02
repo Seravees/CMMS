@@ -12,4 +12,6 @@ public interface IMalfunctionDao {
 	int addMalfunction(MalfunctionRecords mr);
 
 	int editMalfunctionState(String malfunctionId, String malfunctionState);
+
+	int deleteMalfunction(String malfunctionId);
 }

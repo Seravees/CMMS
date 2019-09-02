@@ -56,7 +56,7 @@ public class UserServlet extends HttpServlet {
 		}
 
 		request.setAttribute(
-				"test",
+				"datagridHtml",
 				"<table id='datagrid' class='easyui-datagrid' title='用户'"
 						+ "	style='border-left: 0px; border-right: 0px;' "
 						+ "toolbar='#toolbar' rownumbers='true' singleSelect='true'>"

@@ -17,7 +17,7 @@ $('#datagrid').datagrid({
 		title : '报修人',
 		fixed : true
 	}, {
-		field : 'malfunctionState',
+		field : 'malfunctionStateName',
 		title : '状态',
 		fixed : true
 	} ] ],
@@ -27,7 +27,7 @@ $('#datagrid').datagrid({
 	loadFilter : pagerFilter
 });
 
-/*设备表格式*/
+/* 设备表格式 */
 $('#datagrid-equipment').datagrid({
 	columns : [ [ {
 		field : 'equipmentNo',
@@ -68,7 +68,7 @@ $('#datagrid-equipment').datagrid({
 	loadFilter : pagerFilter
 });
 
-/*维修记录表格式*/
+/* 维修记录表格式 */
 $('#datagrid-maintenance').datagrid({
 	columns : [ [ {
 		field : 'mStarttime',
@@ -97,7 +97,7 @@ $('#datagrid-maintenance').datagrid({
 	loadFilter : pagerFilter
 });
 
-/*分页显示*/
+/* 分页显示 */
 function pagerFilter(data) {
 	if (typeof data.length == 'number' && typeof data.splice == 'function') {
 		data = {
@@ -128,21 +128,21 @@ function pagerFilter(data) {
 	return data;
 }
 
-/*新增报修记录*/
+/* 新增报修记录 */
 function newMalfunction() {
 	$('#dlg-add').dialog('open').dialog('setTitle', '新增报修记录');
 	$('#fm-add').form('clear');
 	// url = '';
 }
 
-/*设备查询*/
+/* 设备查询 */
 function doEquipmentSearch() {
 	$('#datagrid-equipment').datagrid('options').url = 'equipment';
 	$('#datagrid-equipment').datagrid('load');
 	$('#dlg-equipment').dialog('open').dialog('setTitle', '设备选择');
 }
 
-/*设备查询确认*/
+/* 设备查询确认 */
 function equipmentConfirm() {
 	var row = $('#datagrid-equipment').datagrid('getSelected');
 	if (row) {
@@ -159,7 +159,7 @@ function equipmentConfirm() {
 	}
 }
 
-/*新增报修记录确认*/
+/* 新增报修记录确认 */
 function malfunctionConfirm() {
 	$('#fm-add').form('submit', {
 		url : 'malfunctionAdd',
@@ -177,16 +177,6 @@ function malfunctionConfirm() {
 					title : 'Success',
 					msg : '添加成功'
 				});
-			} else if (res == 'fail edit') {
-				$.messager.show({
-					title : 'Error',
-					msg : '修改失败'
-				});
-			} else if (res == 'success edit') {
-				$.messager.show({
-					title : 'Success',
-					msg : '修改成功'
-				});
 			}
 			$('#dlg-add').dialog('close');
 			$('#datagrid').datagrid('reload');
@@ -194,7 +184,7 @@ function malfunctionConfirm() {
 	});
 }
 
-/*查看维修记录*/
+/* 查看维修记录 */
 function confirmMalfunction() {
 	var row = $('#datagrid').datagrid('getSelected');
 	if (row) {
@@ -217,7 +207,7 @@ function confirmMalfunction() {
 	}
 }
 
-/*维修确认*/
+/* 维修确认 */
 function confirm() {
 	url = 'malfunctionList?confirm=1&malfunctionState=2&malfunctionId='
 			+ $('#malfunctionId-confirm').val();
@@ -226,13 +216,13 @@ function confirm() {
 	$('#dlg-maintenance').dialog('close');
 }
 
-/*维修撤回*/
+/* 维修撤回 */
 function retract() {
 	$('#dlg-maintenance-retract').dialog('open').dialog('setTitle', '撤回确认');
 	$('#retract-equipmentRemark').textbox('clear');
 }
 
-/*维修撤回确认*/
+/* 维修撤回确认 */
 function retract_confirm() {
 	url = 'malfunctionList?confirm=2&malfunctionState=2&malfunctionId='
 			+ $('#malfunctionId-confirm').val() + '&equipmentRemark='
@@ -243,7 +233,7 @@ function retract_confirm() {
 	$('#dlg-maintenance').dialog('close');
 }
 
-/*左边栏分类显示*/
+/* 左边栏分类显示 */
 function doPost(obj) {
 	var url;
 	if (obj == '待维修') {
@@ -258,4 +248,31 @@ function doPost(obj) {
 	}
 	$('#datagrid').datagrid('options').url = url;
 	$('#datagrid').datagrid('load');
+}
+
+/* 报修记录删除 */
+function removeMalfunction() {
+	var row = $('#datagrid').datagrid('getSelected');
+	if (row) {
+		$.messager.confirm('Confirm', '确定删除此记录？', function(r) {
+			if (r) {
+				$.post('malfunctionDelete', {
+					malfunctionId : row.malfunctionId
+				}, function(result) {
+					if (result == 'success delete') {
+						$('#datagrid').datagrid('reload');
+						$.messager.show({
+							title : 'Success',
+							msg : '删除成功'
+						});
+					} else if (result == 'fail delete') {
+						$.messager.show({
+							title : 'Error',
+							msg : '删除失败'
+						}, 'json');
+					}
+				});
+			}
+		});
+	}
 }

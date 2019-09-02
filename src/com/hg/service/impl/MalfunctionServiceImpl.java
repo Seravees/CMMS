@@ -36,4 +36,10 @@ public class MalfunctionServiceImpl implements IMalfunctionService {
 		return malfunctionDao.findAllMalfunction(malfunctionState);
 	}
 
+	@Override
+	public int deleteMalfunction(String malfunctionId) {
+		// TODO Auto-generated method stub
+		return malfunctionDao.deleteMalfunction(malfunctionId);
+	}
+
 }

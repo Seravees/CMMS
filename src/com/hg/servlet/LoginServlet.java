@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("name", user.getName());
 			session.setAttribute("url", url);
 			//request.setAttribute("name", user.getName());
-			request.setAttribute("test", "");
+			request.setAttribute("datagridHtml", "");
 			//request.setAttribute("test1", "user");
 			request.setAttribute("user", user);
 			//System.out.println(url);
