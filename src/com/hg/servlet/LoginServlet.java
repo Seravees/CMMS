@@ -14,10 +14,9 @@ import com.hg.service.IUserService;
 import com.hg.service.impl.UserServiceImpl;
 
 /**
- * Servlet implementation class LoginServlet
- * 用户登录
+ * Servlet implementation class LoginServlet 用户登录
  */
-@WebServlet("/LoginServlet")
+@WebServlet(name = "/LoginServlet", urlPatterns = { "/login" })
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -68,13 +67,13 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("name", user.getName());
 			session.setAttribute("url", url);
-			//request.setAttribute("name", user.getName());
+			// request.setAttribute("name", user.getName());
 			request.setAttribute("datagridHtml", "");
-			//request.setAttribute("test1", "user");
+			// request.setAttribute("test1", "user");
 			request.setAttribute("user", user);
-			//System.out.println(url);
+			// System.out.println(url);
 			// response.sendRedirect(url);
-			//request.getRequestDispatcher(url).forward(request, response);
+			// request.getRequestDispatcher(url).forward(request, response);
 			response.sendRedirect("/CMMS/manageServlet");
 		} else {
 			request.getRequestDispatcher("index.jsp")

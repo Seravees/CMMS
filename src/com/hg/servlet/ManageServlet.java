@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ManageServlet
- * 根据用户权限跳转
+ * Servlet implementation class ManageServlet 根据用户权限跳转
  */
-@WebServlet("/ManageServlet")
+@WebServlet(name = "/ManageServlet", urlPatterns = { "/manageServlet" })
 public class ManageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

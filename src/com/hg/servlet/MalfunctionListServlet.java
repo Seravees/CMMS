@@ -18,10 +18,9 @@ import com.hg.service.impl.MaintenanceServiceImpl;
 import com.hg.service.impl.MalfunctionServiceImpl;
 
 /**
- * Servlet implementation class MalfunctionListServlet
- * 报修记录列表展示
+ * Servlet implementation class MalfunctionListServlet 报修记录列表展示
  */
-@WebServlet("/MalfunctionListServlet")
+@WebServlet(name = "/MalfunctionListServlet", urlPatterns = { "/malfunctionList" })
 public class MalfunctionListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -67,7 +66,8 @@ public class MalfunctionListServlet extends HttpServlet {
 			} else if (confirm.equals("2")) {
 				// System.out.println(malfunctionId);
 				// System.out.println(equipmentRemark);
-				maintenanceService.updateMremarkbyMrecordsId(equipmentRemark,malfunctionId);
+				maintenanceService.updateMremarkbyMrecordsId(equipmentRemark,
+						malfunctionId);
 				malfunctionService.editMalfunctionState(malfunctionId, "1");
 			}
 		}

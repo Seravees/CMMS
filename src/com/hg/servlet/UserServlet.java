@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class UserServlet
  * 用户表html输出
  */
-@WebServlet("/UserServlet")
+@WebServlet(name="/UserServlet",urlPatterns={"/user"})
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

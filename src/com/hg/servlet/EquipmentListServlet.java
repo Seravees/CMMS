@@ -16,10 +16,9 @@ import com.hg.service.IEquipmentService;
 import com.hg.service.impl.EquipmentServiceImpl;
 
 /**
- * Servlet implementation class EquipmentServlet
- * 设备列表展示
+ * Servlet implementation class EquipmentServlet 设备列表展示
  */
-@WebServlet("/EquipmentServlet")
+@WebServlet(name = "/EquipmentListServlet", urlPatterns = { "/equipmentList" })
 public class EquipmentListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

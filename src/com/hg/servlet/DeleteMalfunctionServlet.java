@@ -15,7 +15,7 @@ import com.hg.service.impl.MalfunctionServiceImpl;
 /**
  * 报修记录删除 Servlet implementation class DeleteMalfunctionServlet
  */
-@WebServlet("/DeleteMalfunctionServlet")
+@WebServlet(name = "/DeleteMalfunctionServlet", urlPatterns = { "/malfunctionDelete" })
 public class DeleteMalfunctionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

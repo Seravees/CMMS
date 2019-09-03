@@ -14,10 +14,9 @@ import com.hg.service.IUserService;
 import com.hg.service.impl.UserServiceImpl;
 
 /**
- * Servlet implementation class EditUserServlet
- * 用户修改
+ * Servlet implementation class EditUserServlet 用户修改
  */
-@WebServlet("/EditUserServlet")
+@WebServlet(name = "/EditUserServlet", urlPatterns = { "/UserEdit" })
 public class EditUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

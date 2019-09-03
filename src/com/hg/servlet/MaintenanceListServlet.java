@@ -17,10 +17,9 @@ import com.hg.service.IMaintenanceService;
 import com.hg.service.impl.MaintenanceServiceImpl;
 
 /**
- * Servlet implementation class MaintenanceListServlet
- * 维修记录列表展示
+ * Servlet implementation class MaintenanceListServlet 维修记录列表展示
  */
-@WebServlet("/MaintenanceListServlet")
+@WebServlet(name = "/MaintenanceListServlet", urlPatterns = { "/maintenanceList" })
 public class MaintenanceListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +56,7 @@ public class MaintenanceListServlet extends HttpServlet {
 
 		List<MaintenanceRecords> list = maintenanceService
 				.getMaintenanceRecordsByMalfunction(malr);
-		
+
 		Gson gson = new Gson();
 		String json = gson.toJson(list);
 		System.out.println(json);

@@ -13,10 +13,9 @@ import com.hg.service.IUserService;
 import com.hg.service.impl.UserServiceImpl;
 
 /**
- * Servlet implementation class DeleteUserServlet
- * 用户删除
+ * Servlet implementation class DeleteUserServlet 用户删除
  */
-@WebServlet("/DeleteUserServlet")
+@WebServlet(name = "/DeleteUserServlet", urlPatterns = { "/UserDelete" })
 public class DeleteUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

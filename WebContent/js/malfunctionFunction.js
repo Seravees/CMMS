@@ -137,7 +137,7 @@ function newMalfunction() {
 
 /* 设备查询 */
 function doEquipmentSearch() {
-	$('#datagrid-equipment').datagrid('options').url = 'equipment';
+	$('#datagrid-equipment').datagrid('options').url = 'equipmentList';
 	$('#datagrid-equipment').datagrid('load');
 	$('#dlg-equipment').dialog('open').dialog('setTitle', '设备选择');
 }

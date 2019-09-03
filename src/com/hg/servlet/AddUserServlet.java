@@ -14,10 +14,9 @@ import com.hg.service.IUserService;
 import com.hg.service.impl.UserServiceImpl;
 
 /**
- * Servlet implementation class AddUserServlet
- * 用户添加
+ * Servlet implementation class AddUserServlet 用户添加
  */
-@WebServlet("/AddUserServlet")
+@WebServlet(name = "/AddUserServlet", urlPatterns = { "/UserSave" })
 public class AddUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

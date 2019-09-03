@@ -44,7 +44,7 @@ body {
 				if(obj.text=='用户管理'){
 					post('user');
 				}else if(obj.text=='设备管理'){
-					post('user');		
+					post('equipment');		
 				}
 				
 			}"

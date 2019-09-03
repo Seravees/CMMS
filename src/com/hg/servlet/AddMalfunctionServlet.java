@@ -19,7 +19,7 @@ import com.hg.service.impl.MalfunctionServiceImpl;
 /**
  * Servlet implementation class AddMalfunctionServlet 报修记录添加
  */
-@WebServlet("/AddMalfunctionServlet")
+@WebServlet(name = "/AddMalfunctionServlet", urlPatterns = { "/malfunctionAdd" })
 public class AddMalfunctionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

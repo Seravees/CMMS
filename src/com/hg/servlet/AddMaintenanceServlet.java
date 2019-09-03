@@ -16,10 +16,9 @@ import com.hg.service.impl.MaintenanceServiceImpl;
 import com.hg.service.impl.MalfunctionServiceImpl;
 
 /**
- * Servlet implementation class AddMaintenanceServlet
- * 维修记录添加
+ * Servlet implementation class AddMaintenanceServlet 维修记录添加
  */
-@WebServlet("/AddMaintenanceServlet")
+@WebServlet(name = "/AddMaintenanceServlet", urlPatterns = { "/maintenanceAdd" })
 public class AddMaintenanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -63,7 +62,7 @@ public class AddMaintenanceServlet extends HttpServlet {
 		mr.setmEndtime(request.getParameter("mEndtime"));
 		mr.setmManName((String) session.getAttribute("name"));
 		mr.setmState("");
-		
+
 		// mr.setmRemark(new String(request.getParameter("mRemark").getBytes(
 		// "ISO8859_1"), "UTF-8"));
 

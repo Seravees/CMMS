@@ -16,10 +16,9 @@ import com.hg.service.IUserService;
 import com.hg.service.impl.UserServiceImpl;
 
 /**
- * Servlet implementation class ShowUserServlet
- * 用户列表展示
+ * Servlet implementation class ShowUserServlet 用户列表展示
  */
-@WebServlet("/ShowUserServlet")
+@WebServlet(name = "/ShowUserServlet", urlPatterns = { "/showUsersServlet" })
 public class ShowUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
