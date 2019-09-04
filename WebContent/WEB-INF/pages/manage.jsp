@@ -84,5 +84,6 @@ body {
 		}
 	</script>
 	<script type="text/javascript" src="js/userFunction.js"></script>
+	<script type="text/javascript" src="js/equipmentFunction.js"></script>
 </body>
 </html>

@@ -57,7 +57,7 @@ public class UserServlet extends HttpServlet {
 
 		request.setAttribute(
 				"datagridHtml",
-				"<table id='datagrid' class='easyui-datagrid' title='用户'"
+				"<table id='datagrid-user' class='easyui-datagrid' title='用户'"
 						+ "	style='border-left: 0px; border-right: 0px;' "
 						+ "toolbar='#toolbar' rownumbers='true' singleSelect='true'>"
 						+ "</table>"
@@ -68,12 +68,13 @@ public class UserServlet extends HttpServlet {
 						+ "编辑用户</a>"
 						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-remove' plain='true' onclick='removeUser()'>"
 						+ "删除用户</a>"
-						+ "<input id='searchByName'>"
-						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-search' plain='true' onclick='doSearch()'>"
-						+ "查找用户</a>"
+						// + "<input id='searchByName'>"
+						// +
+						// "<a href='#' class='easyui-linkbutton' iconCls='icon-search' plain='true' onclick='doSearch()'>"
+						// + "查找用户</a>"
 						+ "</div>"
-						+ "<div id='dlg' class='easyui-dialog' style='width:400px;height:380px;padding:10px 20px' closed='true'  buttons='#dlg-buttons'>"
-						+ "<form id='fm' method='post'>"
+						+ "<div id='dlg-user' class='easyui-dialog' style='width:400px;height:380px;padding:10px 20px' closed='true'  buttons='#dlg-user-buttons'>"
+						+ "<form id='fm-user' method='post'>"
 						+ "<div class='fitem'><label>用户名：</label><br>"
 						+ "<input id='accountID' name='accountID' class='easyui-validatebox' required='true'></div><br>"
 						+ "<div class='fitem'><label>密    码：</label><br>"
@@ -89,9 +90,9 @@ public class UserServlet extends HttpServlet {
 						+ "</select></div>"
 						+ "</form>"
 						+ "</div>"
-						+ "<div id='dlg-buttons'>"
+						+ "<div id='dlg-user-buttons'>"
 						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-ok' onclick='saveUser()'>save</a>"
-						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-cancel' onclick='closeDlg()'>取消</a>"
+						+ "<a href='#' class='easyui-linkbutton' iconCls='icon-cancel' onclick='closeDlgUser()'>取消</a>"
 						+ "</div>");
 		// +
 		// "<script type='text/javascript' src='js/userFunction.js'></script>");

@@ -1,7 +1,7 @@
 /*用户表格式*/
-$('#datagrid').datagrid({
+$('#datagrid-user').datagrid({
 	columns : [ [ {
-		field : 'accountID',	
+		field : 'accountID',
 		title : '用户名',
 		fixed : true
 	}, {
@@ -9,11 +9,11 @@ $('#datagrid').datagrid({
 		title : '姓名',
 		fixed : true
 	}, {
-		field : 'tel',	
+		field : 'tel',
 		title : '电话',
 		fixed : true
 	}, {
-		field : 'accountGroupName',	
+		field : 'accountGroupName',
 		title : '角色',
 		fixed : true
 	} ] ],
@@ -23,7 +23,7 @@ $('#datagrid').datagrid({
 	loadFilter : pagerFilter
 });
 
-/*分页显示*/
+/* 分页显示 */
 function pagerFilter(data) {
 	if (typeof data.length == 'number' && typeof data.splice == 'function') {
 		data = {
@@ -54,19 +54,19 @@ function pagerFilter(data) {
 	return data;
 }
 
-/*新增用户*/
+/* 新增用户 */
 function newUser() {
-	$('#dlg').dialog('open').dialog('setTitle', '添加用户');
-	$('#fm').form('clear');
+	$('#dlg-user').dialog('open').dialog('setTitle', '添加用户');
+	$('#fm-user').form('clear');
 	$('#accountID').validatebox({
 		editable : true
 	});
 	url = 'UserSave';
 }
 
-/*新增、修改用户确认*/
+/* 新增、修改用户确认 */
 function saveUser() {
-	$('#fm').form('submit', {
+	$('#fm-user').form('submit', {
 		url : url,
 		onSubmit : function() {
 			return $(this).form('validate');
@@ -93,18 +93,18 @@ function saveUser() {
 					msg : '修改成功'
 				});
 			}
-			$('#dlg').dialog('close');
-			$('#datagrid').datagrid('reload');
+			$('#dlg-user').dialog('close');
+			$('#datagrid-user').datagrid('reload');
 		}
 	});
 }
 
-/*修改用户*/
+/* 修改用户 */
 function editUser() {
-	var row = $('#datagrid').datagrid('getSelected');
+	var row = $('#datagrid-user').datagrid('getSelected');
 	if (row) {
-		$('#dlg').dialog('open').dialog('setTitle', '编辑用户');
-		$('#fm').form('load', row);
+		$('#dlg-user').dialog('open').dialog('setTitle', '编辑用户');
+		$('#fm-user').form('load', row);
 		$('#accountID').validatebox({
 			editable : false
 		});
@@ -112,26 +112,26 @@ function editUser() {
 	}
 }
 
-/*删除用户*/
+/* 删除用户 */
 function removeUser() {
-	var row = $('#datagrid').datagrid('getSelected');
+	var row = $('#datagrid-user').datagrid('getSelected');
 	if (row) {
 		$.messager.confirm('Confirm', '确定删除此用户？', function(r) {
 			if (r) {
 				$.post('UserDelete', {
 					accountID : row.accountID
 				}, function(result) {
-					if (result== 'success delete') {
-						$('#datagrid').datagrid('reload');
+					if (result == 'success delete') {
+						$('#datagrid-user').datagrid('reload');
 						$.messager.show({
 							title : 'Success',
 							msg : '删除成功'
 						});
-					} else if(result== 'fail delete'){
+					} else if (result == 'fail delete') {
 						$.messager.show({
 							title : 'Error',
 							msg : '删除失败'
-						}, 'json');
+						});
 					}
 				})
 			}
@@ -139,16 +139,16 @@ function removeUser() {
 	}
 }
 
-/*用户查询*/
+/* 用户查询 */
 function doSearch() {
 	var $userName = $('#searchByName');
 	var ByName = $userName.val();
-	$('#datagrid').datagrid({
+	$('#datagrid-user').datagrid({
 		queryParams : {
 			ByName : ByName
 		},
 		columns : [ [ {
-			field : 'accountID',		
+			field : 'accountID',
 			title : '用户名',
 			fixed : true
 		}, {
@@ -156,11 +156,11 @@ function doSearch() {
 			title : '姓名',
 			fixed : true
 		}, {
-			field : 'tel',		
+			field : 'tel',
 			title : '电话',
 			fixed : true
 		}, {
-			field : 'accountGroupName',		
+			field : 'accountGroupName',
 			title : '角色',
 			fixed : true
 		} ] ],
@@ -171,7 +171,6 @@ function doSearch() {
 	});
 }
 
-function closeDlg() {
-	$('#dlg').dialog('close');
+function closeDlgUser() {
+	$('#dlg-user').dialog('close');
 }
-

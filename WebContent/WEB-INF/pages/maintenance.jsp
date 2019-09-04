@@ -92,12 +92,12 @@ body {
 					<br>
 					<div class='fitem'>
 						<label>维修开始时间</label><br> <input id='mStarttime'
-							name='mStarttime' class='easyui-datetimebox'>
+							name='mStarttime' class='easyui-datetimebox' required='true'>
 					</div>
 					<br>
 					<div class='fitem'>
 						<label>维修结束时间</label> <br> <input id='mEndtime'
-							name='mEndtime' class='easyui-datetimebox'>
+							name='mEndtime' class='easyui-datetimebox' required='true'>
 					</div>
 				</form>
 			</div>
