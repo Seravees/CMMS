@@ -46,4 +46,35 @@ public class EquipmentDaoImpl implements IEquipmentDao {
 		return list;
 	}
 
+	/***** 新增设备 *****/
+	@Override
+	public int addEquipment(Equipment equipment) {
+		// TODO Auto-generated method stub
+		Connection conn = Dao.conn();
+		int rs = 0;
+
+		try {
+			PreparedStatement pstmt = conn
+					.prepareStatement("insert into dbo.CMMS_Equipment "
+							+ "(EquipmentNO,EquipmentTYPE,EquipmentNAME_INSIDE,EquipmentNAME_OUTSIDE,AccountStarttime,EquipmentState,EquipmentAddress,EquipmentGPS,Remark) "
+							+ "values(?,?,?,?,?,?,?,?,?)");
+			pstmt.setString(1, equipment.getEquipmentNo());
+			pstmt.setString(2, equipment.getEquipmentType());
+			pstmt.setString(3, equipment.getEquipmentNameInside());
+			pstmt.setString(4, equipment.getEquipmentNameOutside());
+			pstmt.setString(5, equipment.getAccountStarttime());
+			pstmt.setString(6, equipment.getEquipmentState());
+			pstmt.setString(7, equipment.getEquipmentAddress());
+			pstmt.setString(8, equipment.getEquipmentGps());
+			pstmt.setString(9, equipment.getEquipmentRemark());
+
+			rs = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
 }

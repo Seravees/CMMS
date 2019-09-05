@@ -7,4 +7,6 @@ import com.hg.domain.Equipment;
 public interface IEquipmentDao {
 
 	List<Equipment> findAllEquipment();
+
+	int addEquipment(Equipment equipment);
 }

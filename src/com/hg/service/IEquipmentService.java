@@ -6,4 +6,6 @@ import com.hg.domain.Equipment;
 
 public interface IEquipmentService {
 	List<Equipment> getEquipment();
+
+	int addEquipment(Equipment equipment);
 }

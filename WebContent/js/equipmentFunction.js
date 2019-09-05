@@ -123,7 +123,7 @@ function editEquipment() {
 		$('#equipmentNo').validatebox({
 			editable : false
 		});
-		url = 'EquipmentNoEdit?equipmentNo=' + row.equipmentNo;
+		url = 'EquipmentEdit?equipmentNo=' + row.equipmentNo;
 	}
 }
 
