@@ -8,4 +8,6 @@ public interface IEquipmentService {
 	List<Equipment> getEquipment();
 
 	int addEquipment(Equipment equipment);
+
+	int editEquipment(Equipment equipment);
 }

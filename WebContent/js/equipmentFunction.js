@@ -131,6 +131,26 @@ function editEquipment() {
 function removeEquipment() {
 	var row = $('#datagrid-equipment').datagrid('getSelected');
 	if (row) {
+		$.messager.confirm('Confirm', '确定删除此设备？', function(r) {
+			if (r) {
+				$.post('EquipmentDelete', {
+					equipmentNo : row.equipmentNo
+				}, function(result) {
+					if (result == 'success delete') {
+						$('#datagrid-equipment').datagrid('reload');
+						$.messager.show({
+							title : 'Success',
+							msg : '删除成功'
+						});
+					} else if (result == 'fail delete') {
+						$.messager.show({
+							title : 'Error',
+							msg : '删除失败'
+						});
+					}
+				})
+			}
+		});
 	}
 }
 

@@ -22,4 +22,10 @@ public class EquipmentServiceImpl implements IEquipmentService {
 		return equipmentDao.addEquipment(equipment);
 	}
 
+	@Override
+	public int editEquipment(Equipment equipment) {
+		// TODO Auto-generated method stub
+		return equipmentDao.editEquipment(equipment);
+	}
+
 }

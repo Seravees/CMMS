@@ -51,14 +51,17 @@ public class AddEquipmentServlet extends HttpServlet {
 		Equipment equipment = new Equipment();
 		equipment.setEquipmentNo(request.getParameter("equipmentNo"));
 		equipment.setEquipmentType(request.getParameter("equipmentType"));
-		equipment.setEquipmentNameInside(request
-				.getParameter("equipmentNameInside"));
-		equipment.setEquipmentNameOutside(request
-				.getParameter("equipmentNameOutside"));
+		equipment.setEquipmentNameInside(new String(request.getParameter(
+				"equipmentNameInside").getBytes("ISO8859_1"), "UTF-8"));
+		equipment.setEquipmentNameOutside(new String(request.getParameter(
+				"equipmentNameOutside").getBytes("ISO8859_1"), "UTF-8"));
 		equipment.setAccountStarttime(request.getParameter("accountStarttime"));
-		equipment.setEquipmentState(request.getParameter("equipmentState"));
-		equipment.setEquipmentAddress(request.getParameter("equipmentAddress"));
-		equipment.setEquipmentRemark(request.getParameter("equipmentRemark"));
+		equipment.setEquipmentState(new String(request.getParameter(
+				"equipmentState").getBytes("ISO8859_1"), "UTF-8"));
+		equipment.setEquipmentAddress(new String(request.getParameter(
+				"equipmentAddress").getBytes("ISO8859_1"), "UTF-8"));
+		equipment.setEquipmentRemark(new String(request.getParameter(
+				"equipmentRemark").getBytes("ISO8859_1"), "UTF-8"));
 
 		System.out.println(equipment.toString());
 		int rs = equipmentService.addEquipment(equipment);

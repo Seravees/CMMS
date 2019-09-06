@@ -9,4 +9,6 @@ public interface IEquipmentDao {
 	List<Equipment> findAllEquipment();
 
 	int addEquipment(Equipment equipment);
+	
+	int editEquipment(Equipment equipment);
 }
