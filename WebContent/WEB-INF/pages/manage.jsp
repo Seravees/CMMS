@@ -45,8 +45,9 @@ body {
 					post('user');
 				}else if(obj.text=='设备管理'){
 					post('equipment');		
+				}else if(obj.text=='设备类型管理'){
+					post('equipmentType');
 				}
-				
 			}"
 				style="width: 293px;"></div>
 		</div>
@@ -67,6 +68,8 @@ body {
 			text : '设备管理',
 			children : [ {
 				text : '设备管理'
+			}, {
+				text : '设备类型管理'
 			} ]
 		} ]
 
@@ -85,5 +88,6 @@ body {
 	</script>
 	<script type="text/javascript" src="js/userFunction.js"></script>
 	<script type="text/javascript" src="js/equipmentFunction.js"></script>
+	<script type="text/javascript" src="js/equipmentTypeFunction.js"></script>
 </body>
 </html>
