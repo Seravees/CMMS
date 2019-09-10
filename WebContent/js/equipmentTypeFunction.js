@@ -1,7 +1,7 @@
 $('#datagrid-equipment-type').datagrid({
 	columns : [ [ {
 		field : 'typeId',
-		title : '设备类型ID',
+		title : '设备类型编号',
 		fixed : true
 	}, {
 		field : 'typeName',
@@ -54,9 +54,8 @@ function newEquipmentType() {
 	url = 'EquipmentTypeSave';
 }
 
-
 /* 设备添加、修改保存 */
-function saveEquipment() {
+function saveEquipmentType() {
 	$('#fm-equipment-type').form('submit', {
 		url : url,
 		onSubmit : function() {
@@ -90,15 +89,17 @@ function saveEquipment() {
 	});
 }
 
-
-
-
-
-
-
-
-
-
+function editEquipmentType() {
+	var row = $('#datagrid-equipment-type').datagrid('getSelected');
+	if (row) {
+		$('#dlg-equipment-type').dialog('open').dialog('setTitle', '编辑设备');
+		$('#fm-equipment-type').form('load', row);
+		$('#typeId').validatebox({
+			editable : false
+		});
+		url = 'EquipmentTypeEdit?typeId=' + row.typeId;
+	}
+}
 
 function closeDlgEquipmentType() {
 	$('#dlg-equipment-type').dialog('close');

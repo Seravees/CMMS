@@ -2,7 +2,7 @@ package com.hg.domain;
 
 public class EquipmentType {
 	String typeId;
-	String name;
+	String typeName;
 	String remark;
 
 	public String getTypeId() {
@@ -13,12 +13,12 @@ public class EquipmentType {
 		this.typeId = typeId;
 	}
 
-	public String getName() {
-		return name;
+	public String getTypeName() {
+		return typeName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
 
 	public String getRemark() {
@@ -31,7 +31,7 @@ public class EquipmentType {
 
 	@Override
 	public String toString() {
-		return "EquipmentType [typeId=" + typeId + ", name=" + name
+		return "EquipmentType [typeId=" + typeId + ", typeName=" + typeName
 				+ ", remark=" + remark + "]";
 	}
 
